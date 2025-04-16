@@ -33,7 +33,7 @@ export const formatPeerDependencies = (pkg: PackageStatsResponse) => {
 
   return pkg.peerDependencies
     .map((dep) => {
-      return `- **${dep}:** ${dep} bytes`;
+      return `- **${dep}**`;
     })
     .join("\n");
 };
