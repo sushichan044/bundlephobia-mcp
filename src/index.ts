@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import { name as pkgName, version as pkgVersion } from "../package.json";
-import { getPackageInfo } from "./tools";
+import { getNpmPackageInfo } from "./tools";
 
 export const server = new McpServer({
   name: pkgName,
@@ -9,12 +9,12 @@ export const server = new McpServer({
 });
 
 server.tool(
-  getPackageInfo.name,
-  getPackageInfo.description,
-  getPackageInfo.schema,
+  getNpmPackageInfo.name,
+  getNpmPackageInfo.description,
+  getNpmPackageInfo.schema,
   async (parameters, extra) => {
     try {
-      return getPackageInfo.handler(parameters, extra);
+      return getNpmPackageInfo.handler(parameters, extra);
     } catch (error) {
       console.error(error);
       return {

@@ -10,9 +10,9 @@ import {
 import { defineTool } from "./mcp/define";
 import { isNonEmptyString } from "./utils/string";
 
-export const getPackageInfo = defineTool({
-  description: "Get information about a package",
-  name: "get_package_info",
+export const getNpmPackageInfo = defineTool({
+  description: "Get information about an npm package",
+  name: "get_npm_package_info",
 
   schema: {
     name: z.string(),
