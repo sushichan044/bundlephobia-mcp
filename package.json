@@ -2,6 +2,19 @@
   "name": "bundlephobia-mcp",
   "version": "0.0.0",
   "type": "module",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "bundlephobia-mcp": "bin/stdio-server.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sushichan044/bundlephobia-mcp.git"
@@ -14,18 +27,6 @@
     "name": "sushichan044",
     "url": "https://github.com/sushichan044"
   },
-  "bin": {
-    "bundlephobia-mcp": "bin/stdio-server.mjs"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "engines": {
     "node": ">=16"
   },
