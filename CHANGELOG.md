@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.2
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Add friendly description &nbsp;-&nbsp; by **sushichan044** [<samp>(2ba24)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/2ba248b)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Wrong patch &nbsp;-&nbsp; by **sushichan044** [<samp>(2ee5d)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/2ee5d05)
+- Change tool name &nbsp;-&nbsp; by **sushichan044** [<samp>(c6f99)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/c6f9985)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.1...0.0.2)
+
 ## 0.0.1
 
 ### &nbsp;&nbsp;&nbsp;Features
