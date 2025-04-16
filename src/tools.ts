@@ -24,8 +24,8 @@ export const getNpmPackageInfo = defineTool({
         content: [
           {
             text: [
-              "# **Error Occurred**",
-              "You must provide a package name",
+              "# ❌ Invalid Input Error",
+              "You must provide a npm package name.",
             ].join("\n"),
             type: "text",
           },
