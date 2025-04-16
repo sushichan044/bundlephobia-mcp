@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.4
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Peer deps only has names &nbsp;-&nbsp; by **sushichan044** [<samp>(6d8c2)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/6d8c277)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.3...0.0.4)
+
 ## 0.0.3
 
 ### &nbsp;&nbsp;&nbsp;Bug Fixes
