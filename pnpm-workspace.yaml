@@ -1,2 +1,5 @@
 onlyBuiltDependencies:
   - esbuild
+
+patchedDependencies:
+  bumpp@9.11.1: patches/bumpp@9.11.1.patch

@@ -1,0 +1,15 @@
+diff --git a/dist/chunk-K27IS2ON.js b/dist/chunk-K27IS2ON.js
+index e70c146b8c45a6f2f2566c25e5cd911c68c3c643..bb9471bbedb844205914b083731d465002759119 100644
+--- a/dist/chunk-K27IS2ON.js
++++ b/dist/chunk-K27IS2ON.js
+@@ -598,8 +598,9 @@ async function normalizeOptions(raw) {
+     ];
+     if (fsSync.existsSync("pnpm-workspace.yaml")) {
+       const pnpmWorkspace = await fs2.readFile("pnpm-workspace.yaml", "utf8");
++      // https://github.com/antfu-collective/bumpp/pull/78
+       const workspaces = yaml.load(pnpmWorkspace);
+-      const workspacesWithPackageJson = workspaces.packages.map((workspace) => `${workspace}/package.json`);
++      const workspacesWithPackageJson = (workspaces.packages ?? []).map((workspace) => `${workspace}/package.json`) ?? [];
+       const withoutExcludedWorkspaces = workspacesWithPackageJson.filter((workspace) => !workspace.startsWith("!") && !raw.files?.includes(workspace));
+       raw.files = raw.files.concat(withoutExcludedWorkspaces);
+     }
