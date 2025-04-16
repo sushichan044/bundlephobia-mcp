@@ -1,10 +1,10 @@
-import type { ContentResult } from "fastmcp";
+import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 
 import type { SizeAPIErrorResponse } from "./api/size";
 
 export const errorContentFromResponse = (
   error: SizeAPIErrorResponse,
-): ContentResult => {
+): CallToolResult => {
   switch (error.code) {
     case "BlocklistedPackageError":
       return {
