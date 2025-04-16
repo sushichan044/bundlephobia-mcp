@@ -28,7 +28,9 @@ export const getNpmPackageInfo = defineTool({
   name: "get_npm_package_info",
 
   schema: {
-    name: z.string(),
+    name: z
+      .string()
+      .describe("The name of the npm package to get information about."),
   },
 
   handler: async ({ name }) => {
