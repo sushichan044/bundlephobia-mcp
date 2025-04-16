@@ -32,9 +32,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.9.0",
-    "fastmcp": "1.21.0",
     "ofetch": "1.4.1",
-    "valibot": "1.0.0",
     "zod": "3.24.2"
   },
   "scripts": {
