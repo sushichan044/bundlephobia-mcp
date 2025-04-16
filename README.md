@@ -4,6 +4,8 @@
 
 Allow your AI to take into account the bundle size and tree-shakeability of npm packages.
 
+Powered by [bundlephobia.com](https://bundlephobia.com/)
+
 ## Use stdio server
 
 ### Deno
