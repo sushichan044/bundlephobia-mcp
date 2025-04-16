@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.3
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Add describe to params &nbsp;-&nbsp; by **sushichan044** [<samp>(71e14)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/71e14bc)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.2...0.0.3)
+
 ## 0.0.2
 
 ### &nbsp;&nbsp;&nbsp;Features
