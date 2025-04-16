@@ -6,6 +6,14 @@
     "type": "git",
     "url": "https://github.com/sushichan044/bundlephobia-mcp.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": {
+    "name": "sushichan044",
+    "url": "https://github.com/sushichan044"
+  },
   "bin": {
     "bundlephobia-mcp": "bin/stdio-server.mjs"
   },
@@ -14,10 +22,6 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     }
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
   },
   "files": [
     "dist"
