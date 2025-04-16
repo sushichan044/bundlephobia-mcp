@@ -10,9 +10,22 @@ import {
 import { defineTool } from "./mcp/define";
 import { isNonEmptyString } from "./utils/string";
 
-export const getPackageInfo = defineTool({
-  description: "Get information about a package",
-  name: "get_package_info",
+export const getNpmPackageInfo = defineTool({
+  description: [
+    "Get information about an npm package with bundlephobia.",
+    "",
+    "For example, you can retrieve information about:",
+    "- Bundle size",
+    "- Tree-shakeability",
+    "- Dependencies",
+    "- Peer dependencies",
+    "- Assets",
+    "## Usage",
+    "```",
+    "get_npm_package_info(name: '$PACKAGE_NAME')",
+    "```",
+  ].join("\n"),
+  name: "get_npm_package_info",
 
   schema: {
     name: z.string(),
@@ -24,8 +37,8 @@ export const getPackageInfo = defineTool({
         content: [
           {
             text: [
-              "# **Error Occurred**",
-              "You must provide a package name",
+              "# ❌ Invalid Input Error",
+              "You must provide non-empty string.",
             ].join("\n"),
             type: "text",
           },
