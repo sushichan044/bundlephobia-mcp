@@ -50,6 +50,7 @@ export interface PackageAssets {
   dependencyCount: number;
   dependencySizes: DependencySize[];
   gzip: number;
+  ignoredMissingDependencies?: string[];
   peerDependencies?: string[];
   size: number;
 }
