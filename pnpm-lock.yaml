@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   bumpp@9.11.1:
-    hash: 70c9595f73717d53a4c8815f1f04275ed28d3592dfae3fb9b5bf1489a123aae7
+    hash: 72c903c7920d0c95e59b74c67857ae58ce56d0b24bcdb444044d64e677703fcf
     path: patches/bumpp@9.11.1.patch
 
 importers:
@@ -4656,7 +4656,7 @@ snapshots:
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
-  bumpp@9.11.1(patch_hash=70c9595f73717d53a4c8815f1f04275ed28d3592dfae3fb9b5bf1489a123aae7):
+  bumpp@9.11.1(patch_hash=72c903c7920d0c95e59b74c67857ae58ce56d0b24bcdb444044d64e677703fcf):
     dependencies:
       c12: 2.0.4
       cac: 6.7.14
@@ -6935,7 +6935,7 @@ snapshots:
 
   release-it-pnpm@4.6.4(release-it@18.1.2(@types/node@22.14.1)(typescript@5.8.3)):
     dependencies:
-      bumpp: 9.11.1(patch_hash=70c9595f73717d53a4c8815f1f04275ed28d3592dfae3fb9b5bf1489a123aae7)
+      bumpp: 9.11.1(patch_hash=72c903c7920d0c95e59b74c67857ae58ce56d0b24bcdb444044d64e677703fcf)
       changelogithub: 0.13.11
       conventional-changelog-conventionalcommits: 8.0.0
       conventional-recommended-bump: 10.0.0
