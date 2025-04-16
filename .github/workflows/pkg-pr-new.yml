@@ -39,7 +39,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Node.js and pnpm
-        uses: ./.github/composite/setup
+        uses: ./.github/workflows/composite/setup
 
       - name: Build
         run: pnpm build

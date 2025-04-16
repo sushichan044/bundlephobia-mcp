@@ -33,7 +33,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js and pnpm
-        uses: ./.github/composite/setup
+        uses: ./.github/workflows/composite/setup
         with:
           registry-url: 'https://registry.npmjs.org'
 
