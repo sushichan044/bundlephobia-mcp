@@ -1,0 +1,34 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    open-pull-requests-limit: 10
+    directory: "/"
+    schedule:
+      day: "monday"
+      interval: "weekly"
+      time: "10:00"
+      timezone: "Asia/Tokyo"
+
+  - package-ecosystem: "npm"
+    open-pull-requests-limit: 15
+    directory: "/"
+    schedule:
+      day: "monday"
+      interval: "weekly"
+      time: "10:00"
+      timezone: "Asia/Tokyo"
+    groups:
+      # TIP: 複数の group にマッチする場合最初の group が適用される
+      # なので、より詳細な group を先に書く
+      typescript:
+        patterns:
+          - "typescript"
+        update-types:
+          - "minor"
+          - "patch"
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
