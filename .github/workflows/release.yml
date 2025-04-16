@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js and pnpm
         uses: ./.github/workflows/composite/setup
         with:
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - name: Build
         run: pnpm run build
@@ -45,4 +45,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: 'true'
+          NPM_CONFIG_PROVENANCE: "true"

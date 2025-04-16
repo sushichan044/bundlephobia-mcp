@@ -3,15 +3,15 @@ name: Publish preview package
 on:
   pull_request:
     branches:
-      - '**'
+      - "**"
     types:
       - opened
       - synchronize
       - reopened
     paths:
-      - 'src/**'
-      - 'package.json'
-      - '.github/workflows/pkg-pr-new.yml'
+      - "src/**"
+      - "package.json"
+      - ".github/workflows/pkg-pr-new.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
