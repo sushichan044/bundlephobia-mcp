@@ -7,40 +7,52 @@ import type {
 import { isEmptyObject } from "./utils/object";
 import { isNonEmptyString } from "./utils/string";
 
-export const isTreeShakeable = (info: PackageBundle) => {
-  return (
-    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
-  );
-};
-
-export const formatDependencies = (
-  pkg: PackageStatsResponse,
-): string | null => {
-  if (
-    pkg.dependencySizes.length === 1 &&
-    pkg.dependencySizes[0]?.name === pkg.name
-  ) {
-    // dependencySizes always includes itself.
-    return null;
-  }
-
-  return pkg.dependencySizes
-    .map((dep) => {
-      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
-    })
-    .join("\n");
-};
-
-export const formatPeerDependencies = (pkg: PackageStatsResponse) => {
-  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
-    return null;
-  }
-
-  return pkg.peerDependencies
-    .map((dep) => {
-      return `- **${dep}**`;
-    })
-    .join("\n");
+export const formatPackageHistoryStats = (
+  packageInfo: PackageStatsResponse,
+) => {
+  return [
+    `# 📦 Package Information for ${packageInfo.name}`,
+    "",
+    "## 📔 Package Info",
+    "",
+    `**Name:** ${packageInfo.name}`,
+    `**Version:** ${packageInfo.version}`,
+    `**NPM Link:** https://www.npmjs.com/package/${packageInfo.name}`,
+    `**Description:** ${packageInfo.description}`,
+    ...(isNonEmptyString(packageInfo.repository)
+      ? [`**Repository:** ${packageInfo.repository}`]
+      : []),
+    "",
+    "## ⚖️ Bundle Size",
+    "",
+    `**Tree-shakable:** ${isTreeShakeable(packageInfo) ? "Yes" : "No"}`,
+    `**Size:** ${packageInfo.size} bytes`,
+    `**Gzipped size:** ${packageInfo.gzip} bytes`,
+    "",
+    "### Dependencies",
+    formatDependencies(packageInfo) ?? "No dependencies",
+    "",
+    "### Peer Dependencies",
+    formatPeerDependencies(packageInfo) ?? "No peer dependencies",
+    ...((packageInfo?.ignoredMissingDependencies?.length ?? 0) > 0
+      ? [
+          "### Ignored Missing Dependencies",
+          "",
+          packageInfo.ignoredMissingDependencies
+            ?.map((dep) => `- **${dep}**`)
+            .join("\n"),
+        ]
+      : []),
+    "",
+    "## Asset Information",
+    "This is additional information about the assets that are included in the package.",
+    "### Assets Files",
+    packageInfo.assets
+      .map((asset) => {
+        return `- **${asset.name}:** ${asset.size} bytes`;
+      })
+      .join("\n"),
+  ].join("\n");
 };
 
 export const formatPackageHistory = (
@@ -80,4 +92,38 @@ export const formatPackageHistory = (
       : []),
     // Asset information is omitted for context window size
   ].join("\n");
+};
+
+const isTreeShakeable = (info: PackageBundle) => {
+  return (
+    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
+  );
+};
+
+const formatDependencies = (pkg: PackageStatsResponse): string | null => {
+  if (
+    pkg.dependencySizes.length === 1 &&
+    pkg.dependencySizes[0]?.name === pkg.name
+  ) {
+    // dependencySizes always includes itself.
+    return null;
+  }
+
+  return pkg.dependencySizes
+    .map((dep) => {
+      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
+    })
+    .join("\n");
+};
+
+const formatPeerDependencies = (pkg: PackageStatsResponse) => {
+  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
+    return null;
+  }
+
+  return pkg.peerDependencies
+    .map((dep) => {
+      return `- **${dep}**`;
+    })
+    .join("\n");
 };
