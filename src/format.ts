@@ -83,7 +83,7 @@ export function formatPackageHistory(
     formatPeerDependencies(pastPkg) ?? "No peer dependencies",
     ...((pastPkg?.ignoredMissingDependencies?.length ?? 0) > 0
       ? [
-          "## Ignored Missing Dependencies",
+          "### Ignored Missing Dependencies",
           "",
           pastPkg.ignoredMissingDependencies
             ?.map((dep) => `- **${dep}**`)
