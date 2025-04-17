@@ -8,7 +8,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
  * @param server - The MCP server to start.
  * @returns A cleanup function to stop the MCP server.
  */
-export const startStdioTransport = async (server: McpServer) => {
+export async function startStdioTransport(server: McpServer) {
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
@@ -16,4 +16,4 @@ export const startStdioTransport = async (server: McpServer) => {
     await server.close();
     await transport.close();
   };
-};
+}

@@ -7,13 +7,13 @@ import type {
 import { isEmptyObject } from "./utils/object";
 import { isNonEmptyString } from "./utils/string";
 
-const isTreeShakeable = (info: PackageBundle) => {
+function isTreeShakeable(info: PackageBundle) {
   return (
     isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
   );
-};
+}
 
-const formatDependencies = (pkg: PackageStatsResponse): string | null => {
+function formatDependencies(pkg: PackageStatsResponse): string | null {
   if (
     pkg.dependencySizes.length === 1 &&
     pkg.dependencySizes[0]?.name === pkg.name
@@ -27,9 +27,9 @@ const formatDependencies = (pkg: PackageStatsResponse): string | null => {
       return `- **${dep.name}:** ${dep.approximateSize} bytes`;
     })
     .join("\n");
-};
+}
 
-const formatPeerDependencies = (pkg: PackageStatsResponse) => {
+function formatPeerDependencies(pkg: PackageStatsResponse) {
   if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
     return null;
   }
@@ -39,11 +39,11 @@ const formatPeerDependencies = (pkg: PackageStatsResponse) => {
       return `- **${dep}**`;
     })
     .join("\n");
-};
+}
 
-export const formatPackageHistoryStats = (
+export function formatPackageHistoryStats(
   packageInfo: PackageStatsResponse,
-) => {
+): string {
   return [
     `# 📦 Package Information for ${packageInfo.name}`,
     "",
@@ -87,12 +87,12 @@ export const formatPackageHistoryStats = (
       })
       .join("\n"),
   ].join("\n");
-};
+}
 
-export const formatPackageHistory = (
+export function formatPackageHistory(
   version: string,
   pastPkg: PackageStatsHistoryResponse[string],
-): string => {
+): string {
   if (isEmptyObject(pastPkg)) {
     return [`## ${version}`, "", "Not recorded in bundlephobia."].join("\n");
   }
@@ -126,4 +126,4 @@ export const formatPackageHistory = (
       : []),
     // Asset information is omitted for context window size
   ].join("\n");
-};
+}

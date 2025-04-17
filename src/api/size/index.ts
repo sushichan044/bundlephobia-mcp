@@ -18,10 +18,10 @@ export type SizeAPIErrorResponse =
   | PackageVersionMismatchError
   | UnsupportedPackageError;
 
-export const fetchPackageStats = async (
+export async function fetchPackageStats(
   pkgName: string,
-): Promise<ApiSizeResponse> =>
-  ofetch<ApiSizeResponse>("/api/size", {
+): Promise<ApiSizeResponse> {
+  return ofetch<ApiSizeResponse>("/api/size", {
     baseURL: "https://bundlephobia.com",
     query: {
       package: pkgName,
@@ -31,14 +31,17 @@ export const fetchPackageStats = async (
     retryDelay: 500,
     retryStatusCodes: [500],
   });
+}
 
-export const isSizeAPIErrorResponse = (
+export function isSizeAPIErrorResponse(
   response: ApiSizeResponse,
-): response is SizeAPIErrorResponse => "code" in response;
+): response is SizeAPIErrorResponse {
+  return "code" in response;
+}
 
-export const errorContentFromSizeAPIErrorResponse = (
+export function errorContentFromSizeAPIErrorResponse(
   error: SizeAPIErrorResponse,
-): CallToolResult => {
+): CallToolResult {
   switch (error.code) {
     case "BlocklistedPackageError":
       return {
@@ -180,7 +183,7 @@ export const errorContentFromSizeAPIErrorResponse = (
         isError: true,
       };
   }
-};
+}
 
 type ApiSizeResponse = PackageStatsResponse | SizeAPIErrorResponse;
 
