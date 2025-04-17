@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.5
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Add package history tool &nbsp;-&nbsp; by **sushichan044** [<samp>(ac887)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/ac887e9)
+- Add ignoredMissingDependencies information &nbsp;-&nbsp; by **sushichan044** [<samp>(d5190)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/d51907a)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Heading size &nbsp;-&nbsp; by **sushichan044** [<samp>(e1242)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/e124227)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.4...0.0.5)
+
 ## 0.0.4
 
 ### &nbsp;&nbsp;&nbsp;Bug Fixes
