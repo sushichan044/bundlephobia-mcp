@@ -1,11 +1,15 @@
 import { z } from "zod";
 
 import {
+  errorContentFromPackageHistoryAPIErrorResponse,
   fetchPackageHistory,
   isPackageHistoryAPIErrorResponse,
 } from "./api/package-history";
-import { fetchPackageStats } from "./api/size";
-import { errorContentFromResponse } from "./content";
+import {
+  errorContentFromSizeAPIErrorResponse,
+  fetchPackageStats,
+  isSizeAPIErrorResponse,
+} from "./api/size";
 import {
   formatDependencies,
   formatPackageHistory,
@@ -30,6 +34,7 @@ export const getNpmPackageInfo = defineTool({
     "get_npm_package_info(name: '$PACKAGE_NAME')",
     "```",
   ].join("\n"),
+
   name: "get_npm_package_info",
 
   schema: {
@@ -45,7 +50,8 @@ export const getNpmPackageInfo = defineTool({
           {
             text: [
               "# ❌ Invalid Input Error",
-              "You must provide non-empty string.",
+              "",
+              "You must provide a non-empty string.",
             ].join("\n"),
             type: "text",
           },
@@ -56,8 +62,8 @@ export const getNpmPackageInfo = defineTool({
 
     const packageInfo = await fetchPackageStats(name);
 
-    if ("code" in packageInfo) {
-      return errorContentFromResponse(packageInfo);
+    if (isSizeAPIErrorResponse(packageInfo)) {
+      return errorContentFromSizeAPIErrorResponse(packageInfo);
     }
 
     return {
@@ -129,25 +135,25 @@ export const getNpmPackageInfoHistory = defineTool({
   },
 
   handler: async ({ name }) => {
-    const packageInfo = await fetchPackageHistory(name);
-
-    if (isPackageHistoryAPIErrorResponse(packageInfo)) {
+    if (!isNonEmptyString(name)) {
       return {
         content: [
           {
             text: [
-              "# ❌ Error Occurred",
+              "# ❌ Invalid Input Error",
               "",
-              "Failed to fetch package history.",
-              "",
-              "## Error Details",
-              packageInfo.message,
+              "You must provide a non-empty string.",
             ].join("\n"),
             type: "text",
           },
         ],
         isError: true,
       };
+    }
+    const packageInfo = await fetchPackageHistory(name);
+
+    if (isPackageHistoryAPIErrorResponse(packageInfo)) {
+      return errorContentFromPackageHistoryAPIErrorResponse(packageInfo);
     }
 
     return {
