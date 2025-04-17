@@ -1,9 +1,14 @@
 import { z } from "zod";
 
+import {
+  fetchPackageHistory,
+  isPackageHistoryAPIErrorResponse,
+} from "./api/package-history";
 import { fetchPackageStats } from "./api/size";
 import { errorContentFromResponse } from "./content";
 import {
   formatDependencies,
+  formatPackageHistory,
   formatPeerDependencies,
   isTreeShakeable,
 } from "./format";
@@ -95,6 +100,61 @@ export const getNpmPackageInfo = defineTool({
           type: "text",
         },
       ],
+    };
+  },
+});
+
+export const getNpmPackageInfoHistory = defineTool({
+  description: [
+    "Get all the past information about an npm package stored in bundlephobia.",
+    "",
+    "For example, you can retrieve information about:",
+    "- Bundle size",
+    "- Tree-shakeability",
+    "- Dependencies",
+    "- Peer dependencies",
+    "- Assets",
+    "## Usage",
+    "```",
+    "get_npm_package_info_history(name: '$PACKAGE_NAME')",
+    "```",
+  ].join("\n"),
+
+  name: "get_npm_package_info_history",
+
+  schema: {
+    name: z
+      .string()
+      .describe("The name of the npm package to get information about."),
+  },
+
+  handler: async ({ name }) => {
+    const packageInfo = await fetchPackageHistory(name);
+
+    if (isPackageHistoryAPIErrorResponse(packageInfo)) {
+      return {
+        content: [
+          {
+            text: [
+              "# ❌ Error Occurred",
+              "",
+              "Failed to fetch package history.",
+              "",
+              "## Error Details",
+              packageInfo.message,
+            ].join("\n"),
+            type: "text",
+          },
+        ],
+        isError: true,
+      };
+    }
+
+    return {
+      content: Object.entries(packageInfo).map(([version, pastPkg]) => ({
+        text: formatPackageHistory(version, pastPkg),
+        type: "text",
+      })),
     };
   },
 });

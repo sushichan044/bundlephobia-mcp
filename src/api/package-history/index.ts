@@ -24,3 +24,7 @@ type PackageHistoryAPIErrorResponse = {
   message: string;
   type: string;
 };
+
+export const isPackageHistoryAPIErrorResponse = (
+  response: ApiPackageHistoryResponse,
+): response is PackageHistoryAPIErrorResponse => "message" in response;

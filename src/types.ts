@@ -10,7 +10,10 @@ export interface PackageStatsResponse
  * `/api/package-history`
  */
 export interface PackageStatsHistoryResponse {
-  [version: string]: PackageStatsResponse;
+  /**
+   * If the package is not found, the response will be an empty object.
+   */
+  [version: string]: PackageStatsResponse | Record<string, never>;
 }
 
 export interface PackageBundle {
