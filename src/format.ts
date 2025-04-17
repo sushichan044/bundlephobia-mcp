@@ -7,6 +7,40 @@ import type {
 import { isEmptyObject } from "./utils/object";
 import { isNonEmptyString } from "./utils/string";
 
+const isTreeShakeable = (info: PackageBundle) => {
+  return (
+    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
+  );
+};
+
+const formatDependencies = (pkg: PackageStatsResponse): string | null => {
+  if (
+    pkg.dependencySizes.length === 1 &&
+    pkg.dependencySizes[0]?.name === pkg.name
+  ) {
+    // dependencySizes always includes itself.
+    return null;
+  }
+
+  return pkg.dependencySizes
+    .map((dep) => {
+      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
+    })
+    .join("\n");
+};
+
+const formatPeerDependencies = (pkg: PackageStatsResponse) => {
+  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
+    return null;
+  }
+
+  return pkg.peerDependencies
+    .map((dep) => {
+      return `- **${dep}**`;
+    })
+    .join("\n");
+};
+
 export const formatPackageHistoryStats = (
   packageInfo: PackageStatsResponse,
 ) => {
@@ -92,38 +126,4 @@ export const formatPackageHistory = (
       : []),
     // Asset information is omitted for context window size
   ].join("\n");
-};
-
-const isTreeShakeable = (info: PackageBundle) => {
-  return (
-    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
-  );
-};
-
-const formatDependencies = (pkg: PackageStatsResponse): string | null => {
-  if (
-    pkg.dependencySizes.length === 1 &&
-    pkg.dependencySizes[0]?.name === pkg.name
-  ) {
-    // dependencySizes always includes itself.
-    return null;
-  }
-
-  return pkg.dependencySizes
-    .map((dep) => {
-      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
-    })
-    .join("\n");
-};
-
-const formatPeerDependencies = (pkg: PackageStatsResponse) => {
-  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
-    return null;
-  }
-
-  return pkg.peerDependencies
-    .map((dep) => {
-      return `- **${dep}**`;
-    })
-    .join("\n");
 };
