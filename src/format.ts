@@ -7,40 +7,6 @@ import type {
 import { isEmptyObject } from "./utils/object";
 import { isNonEmptyString } from "./utils/string";
 
-function isTreeShakeable(info: PackageBundle) {
-  return (
-    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
-  );
-}
-
-function formatDependencies(pkg: PackageStatsResponse): string | null {
-  if (
-    pkg.dependencySizes.length === 1 &&
-    pkg.dependencySizes[0]?.name === pkg.name
-  ) {
-    // dependencySizes always includes itself.
-    return null;
-  }
-
-  return pkg.dependencySizes
-    .map((dep) => {
-      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
-    })
-    .join("\n");
-}
-
-function formatPeerDependencies(pkg: PackageStatsResponse) {
-  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
-    return null;
-  }
-
-  return pkg.peerDependencies
-    .map((dep) => {
-      return `- **${dep}**`;
-    })
-    .join("\n");
-}
-
 export function formatPackageHistoryStats(
   packageInfo: PackageStatsResponse,
 ): string {
@@ -126,4 +92,38 @@ export function formatPackageHistory(
       : []),
     // Asset information is omitted for context window size
   ].join("\n");
+}
+
+function isTreeShakeable(info: PackageBundle) {
+  return (
+    isNonEmptyString(info.hasJSModule) || info.hasJSNext || info.isModuleType
+  );
+}
+
+function formatDependencies(pkg: PackageStatsResponse): string | null {
+  if (
+    pkg.dependencySizes.length === 1 &&
+    pkg.dependencySizes[0]?.name === pkg.name
+  ) {
+    // dependencySizes always includes itself.
+    return null;
+  }
+
+  return pkg.dependencySizes
+    .map((dep) => {
+      return `- **${dep.name}:** ${dep.approximateSize} bytes`;
+    })
+    .join("\n");
+}
+
+function formatPeerDependencies(pkg: PackageStatsResponse) {
+  if (!pkg.peerDependencies || pkg.peerDependencies.length === 0) {
+    return null;
+  }
+
+  return pkg.peerDependencies
+    .map((dep) => {
+      return `- **${dep}**`;
+    })
+    .join("\n");
 }
