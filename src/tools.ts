@@ -93,6 +93,15 @@ export const getNpmPackageInfo = defineTool({
             "",
             "### Peer Dependencies",
             formatPeerDependencies(packageInfo) ?? "No peer dependencies",
+            ...((packageInfo?.ignoredMissingDependencies?.length ?? 0) > 0
+              ? [
+                  "### Ignored Missing Dependencies",
+                  "",
+                  packageInfo.ignoredMissingDependencies
+                    ?.map((dep) => `- **${dep}**`)
+                    .join("\n"),
+                ]
+              : []),
             "",
             "## Asset Information",
             "This is additional information about the assets that are included in the package.",

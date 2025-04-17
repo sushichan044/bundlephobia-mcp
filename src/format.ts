@@ -52,14 +52,14 @@ export const formatPackageHistory = (
   }
 
   return [
-    `## ${pastPkg.version}`,
+    `# 📦 Package Information for ${pastPkg.name} ${pastPkg.version}`,
     "",
-    "### Package Info",
+    "## 📔 Package Info",
     "",
     `**Name:** ${pastPkg.name}`,
     `**Version:** ${pastPkg.version}`,
     "",
-    "### Bundle Size",
+    "## ⚖️ Bundle Size",
     "",
     `**Size:** ${pastPkg.size} bytes`,
     `**Gzipped size:** ${pastPkg.gzip} bytes`,
@@ -69,6 +69,15 @@ export const formatPackageHistory = (
     "",
     "### Peer Dependencies",
     formatPeerDependencies(pastPkg) ?? "No peer dependencies",
+    ...((pastPkg?.ignoredMissingDependencies?.length ?? 0) > 0
+      ? [
+          "## Ignored Missing Dependencies",
+          "",
+          pastPkg.ignoredMissingDependencies
+            ?.map((dep) => `- **${dep}**`)
+            .join("\n"),
+        ]
+      : []),
     // Asset information is omitted for context window size
   ].join("\n");
 };
