@@ -4,7 +4,9 @@ import type { z, ZodRawShape, ZodTypeAny } from "zod";
 
 type MaybePromise<T> = Promise<T> | T;
 
-export const defineTool = <T extends ZodRawShape>(tool: MCPTool<T>) => tool;
+export function defineTool<T extends ZodRawShape>(tool: MCPTool<T>) {
+  return tool;
+}
 
 interface MCPTool<P extends ZodRawShape | undefined = undefined> {
   description: string;

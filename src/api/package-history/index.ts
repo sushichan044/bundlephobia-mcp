@@ -4,24 +4,27 @@ import { ofetch } from "ofetch";
 
 import type { PackageStatsHistoryResponse } from "../../types";
 
-export const fetchPackageHistory = async (
+export async function fetchPackageHistory(
   pkgName: string,
-): Promise<ApiPackageHistoryResponse> =>
-  ofetch<ApiPackageHistoryResponse>("/api/package-history", {
+): Promise<ApiPackageHistoryResponse> {
+  return ofetch<ApiPackageHistoryResponse>("/api/package-history", {
     baseURL: "https://bundlephobia.com",
     query: { package: pkgName },
     retry: 3,
     retryDelay: 500,
     retryStatusCodes: [422, 500],
   });
+}
 
-export const isPackageHistoryAPIErrorResponse = (
+export function isPackageHistoryAPIErrorResponse(
   response: ApiPackageHistoryResponse,
-): response is PackageHistoryAPIErrorResponse => "message" in response;
+): response is PackageHistoryAPIErrorResponse {
+  return "message" in response;
+}
 
-export const errorContentFromPackageHistoryAPIErrorResponse = (
+export function errorContentFromPackageHistoryAPIErrorResponse(
   error: PackageHistoryAPIErrorResponse,
-): CallToolResult => {
+): CallToolResult {
   return {
     content: [
       {
@@ -38,7 +41,7 @@ export const errorContentFromPackageHistoryAPIErrorResponse = (
     ],
     isError: true,
   };
-};
+}
 
 type ApiPackageHistoryResponse =
   | PackageHistoryAPIErrorResponse

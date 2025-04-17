@@ -10,12 +10,7 @@ import {
   fetchPackageStats,
   isSizeAPIErrorResponse,
 } from "./api/size";
-import {
-  formatDependencies,
-  formatPackageHistory,
-  formatPeerDependencies,
-  isTreeShakeable,
-} from "./format";
+import { formatPackageHistory, formatPackageHistoryStats } from "./format";
 import { defineTool } from "./mcp/define";
 import { isNonEmptyString } from "./utils/string";
 
@@ -69,40 +64,7 @@ export const getNpmPackageInfo = defineTool({
     return {
       content: [
         {
-          text: [
-            `# 📦 Package Information for ${name}`,
-            "",
-            "## 📔 Package Info",
-            "",
-            `**Name:** ${packageInfo.name}`,
-            `**Version:** ${packageInfo.version}`,
-            `**NPM Link:** https://www.npmjs.com/package/${packageInfo.name}`,
-            `**Description:** ${packageInfo.description}`,
-            ...(isNonEmptyString(packageInfo.repository)
-              ? [`**Repository:** ${packageInfo.repository}`]
-              : []),
-            "",
-            "## ⚖️ Bundle Size",
-            "",
-            `**Tree-shakable:** ${isTreeShakeable(packageInfo) ? "Yes" : "No"}`,
-            `**Size:** ${packageInfo.size} bytes`,
-            `**Gzipped size:** ${packageInfo.gzip} bytes`,
-            "",
-            "### Dependencies",
-            formatDependencies(packageInfo) ?? "No dependencies",
-            "",
-            "### Peer Dependencies",
-            formatPeerDependencies(packageInfo) ?? "No peer dependencies",
-            "",
-            "## Asset Information",
-            "This is additional information about the assets that are included in the package.",
-            "### Assets Files",
-            packageInfo.assets
-              .map((asset) => {
-                return `- **${asset.name}:** ${asset.size} bytes`;
-              })
-              .join("\n"),
-          ].join("\n"),
+          text: formatPackageHistoryStats(packageInfo),
           type: "text",
         },
       ],
