@@ -1,5 +1,10 @@
-import type { PackageBundle, PackageStatsResponse } from "./types";
+import type {
+  PackageBundle,
+  PackageStatsHistoryResponse,
+  PackageStatsResponse,
+} from "./types";
 
+import { isEmptyObject } from "./utils/object";
 import { isNonEmptyString } from "./utils/string";
 
 export const isTreeShakeable = (info: PackageBundle) => {
@@ -36,4 +41,34 @@ export const formatPeerDependencies = (pkg: PackageStatsResponse) => {
       return `- **${dep}**`;
     })
     .join("\n");
+};
+
+export const formatPackageHistory = (
+  version: string,
+  pastPkg: PackageStatsHistoryResponse[string],
+): string => {
+  if (isEmptyObject(pastPkg)) {
+    return [`## ${version}`, "", "Not recorded in bundlephobia."].join("\n");
+  }
+
+  return [
+    `## ${pastPkg.version}`,
+    "",
+    "### Package Info",
+    "",
+    `**Name:** ${pastPkg.name}`,
+    `**Version:** ${pastPkg.version}`,
+    "",
+    "### Bundle Size",
+    "",
+    `**Size:** ${pastPkg.size} bytes`,
+    `**Gzipped size:** ${pastPkg.gzip} bytes`,
+    "",
+    "### Dependencies",
+    formatDependencies(pastPkg) ?? "No dependencies",
+    "",
+    "### Peer Dependencies",
+    formatPeerDependencies(pastPkg) ?? "No peer dependencies",
+    // Asset information is omitted for context window size
+  ].join("\n");
 };
