@@ -12,7 +12,8 @@
     "format:ci": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "preview": "pnpm run build && vite preview",
-    "deploy": "pnpm run build && wrangler deploy",
+    "deploy:prod": "pnpm run build && wrangler deploy",
+    "deploy:preview": "pnpm run build:preview && wrangler versions upload",
     "postinstall": "wrangler types"
   },
   "dependencies": {
