@@ -1,4 +1,3 @@
-
 # bundlephobia-mcp
 
 [![npm version](https://badge.fury.io/js/bundlephobia-mcp.svg)](https://badge.fury.io/js/bundlephobia-mcp)
