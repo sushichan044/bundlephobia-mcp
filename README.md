@@ -11,17 +11,26 @@ Powered by [bundlephobia.com](https://bundlephobia.com/)
 ### Deno
 
 ```json
-  "bundlephobia": {
-    "command": "deno",
-    "args": ["run", "--allow-net=bundlephobia.com", "npm:bundlephobia-mcp"]
-  }
+"bundlephobia": {
+  "command": "deno",
+  "args": ["run", "--allow-net=bundlephobia.com", "npm:bundlephobia-mcp"]
+}
 ```
 
 ### npx
 
 ```json
-  "bundlephobia": {
-    "command": "npx",
-    "args": ["bundlephobia-mcp"]
-  }
+"bundlephobia": {
+  "command": "npx",
+  "args": ["bundlephobia-mcp"]
+}
+```
+
+## Use SSE server
+
+```json
+"bundlephobia": {
+  "type": "sse",
+  "url": "https://bundlephobia-mcp.sushichan044.workers.dev/sse"
+}
 ```
