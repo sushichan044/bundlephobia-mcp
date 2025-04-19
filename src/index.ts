@@ -1,13 +1,13 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
-import { name as pkgName, version as pkgVersion } from "../package.json";
+import { PKG_NAME, PKG_VERSION } from "./constants";
 import { getNpmPackageInfo, getNpmPackageInfoHistory } from "./tools";
 
 export const server = new McpServer({
   description:
     "Fetch information about the bundle size and dependencies of npm packages. Or retrieve those information over the past versions.",
-  name: pkgName,
-  version: pkgVersion,
+  name: PKG_NAME,
+  version: PKG_VERSION,
 });
 
 /**
