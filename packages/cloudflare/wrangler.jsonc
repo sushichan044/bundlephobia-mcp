@@ -3,7 +3,10 @@
   "name": "bundlephobia-mcp",
   "compatibility_date": "2025-04-18",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/remote/index.ts",
+  "main": "src/server/index.ts",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  },
   "migrations": [
     {
       "new_sqlite_classes": ["BundlephobiaAgent"],

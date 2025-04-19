@@ -40,26 +40,24 @@
     "build": "unbuild",
     "lint": "eslint --max-warnings 0 .",
     "format": "prettier --write .",
-    "format:ci": "prettier --check .",
+    "format:ci": "prettier --check . --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .prettierignore.ci",
     "typecheck": "tsc --noEmit",
     "pkg-pr-new": "pkg-pr-new publish --compact --comment=update --pnpm",
     "check": "pnpm run build && pnpm run lint && pnpm run format:ci && pnpm run typecheck",
     "dev": "wrangler dev"
   },
   "devDependencies": {
-    "@types/node": "22.14.1",
-    "@virtual-live-lab/eslint-config": "2.2.21",
-    "@virtual-live-lab/prettier-config": "2.0.19",
-    "@virtual-live-lab/tsconfig": "2.1.20",
-    "eslint": "9.24.0",
-    "pkg-pr-new": "0.0.42",
-    "prettier": "3.5.3",
-    "release-it": "18.1.2",
-    "release-it-pnpm": "4.6.4",
-    "tsx": "4.19.3",
-    "typescript": "5.8.3",
-    "unbuild": "3.5.0",
-    "wrangler": "4.12.0"
+    "@types/node": "catalog:dev",
+    "@virtual-live-lab/eslint-config": "catalog:dev",
+    "@virtual-live-lab/prettier-config": "catalog:dev",
+    "@virtual-live-lab/tsconfig": "catalog:dev",
+    "eslint": "catalog:dev",
+    "pkg-pr-new": "catalog:dev",
+    "prettier": "catalog:dev",
+    "release-it": "catalog:dev",
+    "release-it-pnpm": "catalog:dev",
+    "typescript": "catalog:dev",
+    "unbuild": "3.5.0"
   },
   "packageManager": "pnpm@10.8.1"
 }

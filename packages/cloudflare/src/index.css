@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+* {
+  letter-spacing: 0.025em;
+}

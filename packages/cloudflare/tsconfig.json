@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "@virtual-live-lab/tsconfig/vite.json",
+    "@virtual-live-lab/tsconfig/react.json"
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["unplugin-icons/types/react"]
+  }
+}

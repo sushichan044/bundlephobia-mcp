@@ -21,9 +21,29 @@ permissions:
   contents: read
 
 jobs:
+  paths-filter:
+    name: Changed Paths Filter
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: read
+    timeout-minutes: 5
+    outputs:
+      cloudflare: ${{ steps.filter.outputs.cloudflare }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          filters: |
+            cloudflare:
+              - 'packages/cloudflare/**'
+
   ci:
     name: Code Problem Check
     runs-on: ubuntu-24.04
+    needs: paths-filter
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -44,3 +64,15 @@ jobs:
 
       - name: Run typecheck
         run: pnpm run typecheck
+
+      - name: Build cloudflare
+        if: needs.paths-filter.outputs.cloudflare == 'true'
+        run: pnpm --filter cloudflare run build
+
+      - name: Run Prettier on cloudflare
+        if: needs.paths-filter.outputs.cloudflare == 'true'
+        run: pnpm --filter cloudflare run format:ci
+
+      - name: Run typecheck on cloudflare
+        if: needs.paths-filter.outputs.cloudflare == 'true'
+        run: pnpm --filter cloudflare run typecheck
