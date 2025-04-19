@@ -43,7 +43,7 @@
   "scripts": {
     "build": "unbuild",
     "lint": "eslint --max-warnings 0 .",
-    "format": "prettier --write .",
+    "format": "prettier --write . --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .prettierignore.ci",
     "format:ci": "prettier --check . --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .prettierignore.ci",
     "typecheck": "tsc --noEmit",
     "pkg-pr-new": "pkg-pr-new publish --compact --comment=update --pnpm",
