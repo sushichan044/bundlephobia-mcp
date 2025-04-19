@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // @ts-check
-import { server } from "../dist/index.mjs";
+import { server, setupServer } from "../dist/index.mjs";
 import { startStdioTransport } from "../dist/mcp/transport/stdio.mjs";
+
+setupServer(server);
 
 const cleanup = await startStdioTransport(server);
 
