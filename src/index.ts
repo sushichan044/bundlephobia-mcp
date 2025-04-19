@@ -4,6 +4,8 @@ import { name as pkgName, version as pkgVersion } from "../package.json";
 import { getNpmPackageInfo, getNpmPackageInfoHistory } from "./tools";
 
 export const server = new McpServer({
+  description:
+    "Fetch information about the bundle size and dependencies of npm packages. Or retrieve those information over the past versions.",
   name: pkgName,
   version: pkgVersion,
 });

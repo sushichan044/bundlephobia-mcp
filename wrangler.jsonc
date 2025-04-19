@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bundlephobia-mcp",
+  "compatibility_date": "2025-04-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/remote/index.ts",
+  "migrations": [
+    {
+      "new_sqlite_classes": ["BundlephobiaAgent"],
+      "tag": "v1"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "BundlephobiaAgent",
+        "name": "BUNDLEPHOBIA_AGENT"
+      }
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
