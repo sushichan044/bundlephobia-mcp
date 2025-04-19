@@ -1,9 +1,14 @@
-import { useMemo } from "react";
-
-import { useLocation } from "./useLocation";
+import { useSyncExternalStore } from "react";
 
 export const useBaseUrl = () => {
-  const loc = useLocation();
+  const url = useSyncExternalStore(
+    (callback) => {
+      window.addEventListener("popstate", callback);
+      return () => window.removeEventListener("popstate", callback);
+    },
+    () => new URL("/", window.location.origin).toString(),
+    () => import.meta.env.BASE_URL,
+  );
 
-  return useMemo(() => new URL("/", loc.origin), [loc.origin]);
+  return url;
 };
