@@ -7,6 +7,10 @@
     ".": {
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
+    },
+    "./internal/constants": {
+      "import": "./dist/constants.mjs",
+      "types": "./dist/constants.d.ts"
     }
   },
   "files": [
