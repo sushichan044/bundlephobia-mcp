@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.6
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Support remote MCP Server &nbsp;-&nbsp; by **sushichan044** [<samp>(1267a)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/1267aa7)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.5...0.0.6)
+
 ## 0.0.5
 
 ### &nbsp;&nbsp;&nbsp;Features
