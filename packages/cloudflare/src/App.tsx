@@ -1,8 +1,13 @@
+import {
+  TOOL_DESCRIPTION,
+  TOOL_TITLE,
+} from "bundlephobia-mcp/internal/constants";
 import { useMemo } from "react";
 import Fa6SolidCircleInfo from "~icons/fa6-solid/circle-info";
 
 import { CodeBlock } from "./components/CodeBlock";
 import { Meta } from "./components/Meta";
+import { useBaseUrl } from "./hooks/useBaseUrl";
 import { useMCPConfigSnippet } from "./hooks/useConfigString";
 
 const getSSEConfig = (sseEndpoint: string) => ({
@@ -13,12 +18,15 @@ const getSSEConfig = (sseEndpoint: string) => ({
 });
 
 function App() {
-  const origin = window.location.origin;
+  const baseUrl = useBaseUrl();
 
-  const sseEndpoint = new URL("/sse", origin).href;
+  const sseEndpoint = useMemo(() => new URL("/sse", baseUrl).href, [baseUrl]);
   // for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const httpStreamEndpoint = new URL("/mcp", origin).href;
+  const httpStreamEndpoint = useMemo(
+    () => new URL("/mcp", baseUrl).href,
+    [baseUrl],
+  );
 
   const sseConfig = useMemo(() => getSSEConfig(sseEndpoint), [sseEndpoint]);
   const sseConfigSnippet = useMCPConfigSnippet(sseConfig);
@@ -37,10 +45,9 @@ function App() {
       <div className="p-4 md:p-8 max-w-6xl mx-auto">
         <div className="space-y-4 md:space-y-6">
           <article className="prose prose-slate">
-            <h1>Bundlephobia MCP</h1>
+            <h1>{TOOL_TITLE}</h1>
             <p>
-              Allow your AI to consider the bundle size and tree-shakeability of
-              npm packages. Powered by
+              {TOOL_DESCRIPTION} Powered by
               <a
                 className="underline hover:brightness-50 transition-all ml-1"
                 href="https://bundlephobia.com"
