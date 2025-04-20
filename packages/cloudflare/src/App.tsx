@@ -123,6 +123,18 @@ function App() {
               </li>
             </ul>
           </article>
+
+          <article className="prose prose-slate">
+            <h2>Extra Information</h2>
+            <a
+              className="underline hover:brightness-50 transition-all"
+              href="https://github.com/sushichan044/bundlephobia-mcp"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Watch the source code on GitHub
+            </a>
+          </article>
         </div>
       </div>
     </>
