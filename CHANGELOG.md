@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0
+
+### &nbsp;&nbsp;&nbsp;Breaking Changes
+
+- Mount sse endpoint on `/mcp` for forward compatibility &nbsp;-&nbsp; by **sushichan044** [<samp>(518f9)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/518f99e)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.0.6...0.1.0)
+
 ## 0.0.6
 
 ### &nbsp;&nbsp;&nbsp;Features
