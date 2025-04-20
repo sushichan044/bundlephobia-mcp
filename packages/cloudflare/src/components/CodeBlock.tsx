@@ -5,6 +5,7 @@ import Fa6SolidCheck from "~icons/fa6-solid/check";
 import Fa6SolidCopy from "~icons/fa6-solid/copy";
 
 import { cn } from "../utils/cn";
+import { isNonEmptyString } from "../utils/string";
 
 type CodeBlockProps = ComponentPropsWithoutRef<"div"> & {
   snippet: string;
@@ -37,7 +38,9 @@ export function CodeBlock({
   return (
     <section className="grid grid-cols-1">
       <div className="bg-slate-700 px-4 py-1 text-slate-200 rounded-t-md flex justify-between items-center">
-        <span className="font-medium">{title}</span>
+        {isNonEmptyString(title) && (
+          <span className="font-medium">{title}</span>
+        )}
         <button
           className="flex items-center gap-1.5 px-3 py-1 rounded hover:bg-slate-600 text-slate-200 transition-colors"
           onClick={handleCopy}
