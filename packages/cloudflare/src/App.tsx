@@ -56,7 +56,6 @@ function App() {
               >
                 bundlephobia.com
               </a>
-              {" ."}
             </p>
 
             <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-md not-prose">
