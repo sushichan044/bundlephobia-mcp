@@ -20,7 +20,7 @@ const getSSEConfig = (sseEndpoint: string) => ({
 function App() {
   const baseUrl = useBaseUrl();
 
-  const sseEndpoint = useMemo(() => new URL("/sse", baseUrl).href, [baseUrl]);
+  const sseEndpoint = useMemo(() => new URL("/mcp", baseUrl).href, [baseUrl]);
   // for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const httpStreamEndpoint = useMemo(

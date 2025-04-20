@@ -10,6 +10,6 @@ export class BundlephobiaAgent extends McpAgent {
   }
 }
 
-export default BundlephobiaAgent.mount("/sse", {
+export default BundlephobiaAgent.mount("/mcp", {
   binding: "BUNDLEPHOBIA_AGENT",
 });

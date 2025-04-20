@@ -16,14 +16,14 @@ Powered by [bundlephobia.com](https://bundlephobia.com/)
 ```json
 "bundlephobia": {
   "type": "sse",
-  "url": "https://bundlephobia-mcp.sushichan044.workers.dev/sse"
+  "url": "https://bundlephobia-mcp.sushichan044.workers.dev/mcp"
 }
 ```
 
 ### VSCode
 
 ```bash
-code --add-mcp '{"bundlephobia":{"type":"sse","url":"https://bundlephobia-mcp.sushichan044.workers.dev/sse"}}'
+code --add-mcp '{"bundlephobia":{"type":"sse","url":"https://bundlephobia-mcp.sushichan044.workers.dev/mcp"}}'
 ```
 
 <details>

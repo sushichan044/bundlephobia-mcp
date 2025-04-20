@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.9.0",
-    "agents": "0.0.60",
     "ofetch": "1.4.1",
     "zod": "3.24.2"
   },
