@@ -72,10 +72,11 @@ function App() {
           <article className="prose prose-slate">
             <h2>Configuration</h2>
             <div>
-              <h3>Edit mcp.json</h3>
+              <h3>Edit json configuration</h3>
               <CodeBlock
                 className="not-prose"
                 snippet={sseConfigSnippet.json}
+                title="mcp.json"
               />
             </div>
             <div>
@@ -83,6 +84,7 @@ function App() {
               <CodeBlock
                 className="not-prose"
                 snippet={sseConfigSnippet.vscodeCommand}
+                title="VSCode CLI"
               />
             </div>
           </article>

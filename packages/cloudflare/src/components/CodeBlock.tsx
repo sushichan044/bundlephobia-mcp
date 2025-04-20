@@ -8,9 +8,15 @@ import { cn } from "../utils/cn";
 
 type CodeBlockProps = ComponentPropsWithoutRef<"div"> & {
   snippet: string;
+  title?: string;
 };
 
-export function CodeBlock({ className, snippet, ...props }: CodeBlockProps) {
+export function CodeBlock({
+  className,
+  snippet,
+  title,
+  ...props
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
@@ -29,21 +35,28 @@ export function CodeBlock({ className, snippet, ...props }: CodeBlockProps) {
   }, [copied]);
 
   return (
-    <div className={cn("relative", className)} {...props}>
-      <pre className="bg-slate-800 text-slate-100 p-4 rounded-md overflow-x-auto">
-        <code>{snippet}</code>
-      </pre>
-      <button
-        className="absolute top-2 right-2 p-2 rounded-md bg-slate-700 hover:bg-slate-600 text-slate-300 transition-colors cursor-pointer"
-        onClick={handleCopy}
-        title={buttonLabel}
-        type="button"
-      >
-        <div className="grid grid-cols-[auto_1fr] items-center gap-2 text-sm">
-          {copied ? <Fa6SolidCheck /> : <Fa6SolidCopy />}
-          <span>{buttonLabel}</span>
-        </div>
-      </button>
-    </div>
+    <section className="grid grid-cols-1">
+      <div className="bg-slate-700 px-4 py-1 text-slate-200 rounded-t-md flex justify-between items-center">
+        <span className="font-medium">{title}</span>
+        <button
+          className="flex items-center gap-1.5 px-3 py-1 rounded hover:bg-slate-600 text-slate-200 transition-colors"
+          onClick={handleCopy}
+          title={buttonLabel}
+          type="button"
+        >
+          {copied ? (
+            <Fa6SolidCheck className="text-green-400" />
+          ) : (
+            <Fa6SolidCopy />
+          )}
+          <span className="text-sm">{buttonLabel}</span>
+        </button>
+      </div>
+      <div className={cn("relative", className)} {...props}>
+        <pre className="bg-slate-800 text-slate-100 p-4 rounded-b-md overflow-x-auto">
+          <code>{snippet}</code>
+        </pre>
+      </div>
+    </section>
   );
 }
