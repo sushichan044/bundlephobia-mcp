@@ -1,5 +1,9 @@
 import type { RequestHandlerExtra } from "@modelcontextprotocol/sdk/shared/protocol.js";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import type {
+  CallToolResult,
+  ServerNotification,
+  ServerRequest,
+} from "@modelcontextprotocol/sdk/types.js";
 import type { z, ZodRawShape, ZodTypeAny } from "zod";
 
 type MaybePromise<T> = Promise<T> | T;
@@ -21,6 +25,8 @@ type ToolCallback<P extends ZodRawShape | undefined = undefined> =
   P extends ZodRawShape
     ? (
         parameters: z.objectOutputType<P, ZodTypeAny>,
-        extras: RequestHandlerExtra,
+        extras: RequestHandlerExtra<ServerRequest, ServerNotification>,
       ) => MaybePromise<CallToolResult>
-    : (extra: RequestHandlerExtra) => MaybePromise<CallToolResult>;
+    : (
+        extras: RequestHandlerExtra<ServerRequest, ServerNotification>,
+      ) => MaybePromise<CallToolResult>;
