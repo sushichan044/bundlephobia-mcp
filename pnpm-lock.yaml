@@ -19,7 +19,7 @@ catalogs:
       specifier: 2.1.20
       version: 2.1.20
     eslint:
-      specifier: 9.25.0
+      specifier: 9.24.0
       version: 9.25.0
     eslint-plugin-react-hooks:
       specifier: 5.2.0
@@ -66,8 +66,8 @@ importers:
   .:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: 1.9.0
-        version: 1.9.0
+        specifier: 1.10.1
+        version: 1.10.1
       ofetch:
         specifier: 1.4.1
         version: 1.4.1
@@ -855,6 +855,10 @@ packages:
 
   '@kamilkisiela/fast-url-parser@1.1.4':
     resolution: {integrity: sha512-gbkePEBupNydxCelHCESvFSFM8XPh1Zs/OAVRW/rKpEqPAl5PbOM90Si8mv9bvnR53uPD2s/FiRxdvSejpRJew==}
+
+  '@modelcontextprotocol/sdk@1.10.1':
+    resolution: {integrity: sha512-xNYdFdkJqEfIaTVP1gPKoEvluACHZsHZegIoICX8DM1o6Qf3G5u2BQJHmgd0n4YgRPqqK/u1ujQvrgAxxSJT9w==}
+    engines: {node: '>=18'}
 
   '@modelcontextprotocol/sdk@1.9.0':
     resolution: {integrity: sha512-Jq2EUCQpe0iyO5FGpzVYDNFR6oR53AIrwph9yWl7uSc7IWUMsrmpmSaTGra5hQNunXpM+9oit85p924jWuHzUA==}
@@ -5279,6 +5283,21 @@ snapshots:
       type-detect: 4.1.0
 
   '@kamilkisiela/fast-url-parser@1.1.4': {}
+
+  '@modelcontextprotocol/sdk@1.10.1':
+    dependencies:
+      content-type: 1.0.5
+      cors: 2.8.5
+      cross-spawn: 7.0.6
+      eventsource: 3.0.6
+      express: 5.1.0
+      express-rate-limit: 7.5.0(express@5.1.0)
+      pkce-challenge: 5.0.0
+      raw-body: 3.0.0
+      zod: 3.24.3
+      zod-to-json-schema: 3.24.5(zod@3.24.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@modelcontextprotocol/sdk@1.9.0':
     dependencies:
