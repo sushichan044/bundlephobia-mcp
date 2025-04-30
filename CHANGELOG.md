@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.0
+
+### &nbsp;&nbsp;&nbsp;Breaking Changes
+
+- Serve SSE Transport from `/sse` &nbsp;-&nbsp; by **sushichan044** [<samp>(4faef)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/4faef1e)
+- Serve SSE Transport from `/sse` &nbsp;-&nbsp; by **sushichan044** [<samp>(b870b)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/b870b1f)
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Serve HTTP Streamable Transport from /mcp &nbsp;-&nbsp; by **sushichan044** [<samp>(7a3e1)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/7a3e1d3)
+- Serve HTTP Streamable Transport from /mcp &nbsp;-&nbsp; by **sushichan044** [<samp>(47dcb)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/47dcbcc)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Types &nbsp;-&nbsp; by **sushichan044** [<samp>(efb2f)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/efb2f79)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.1.0...0.2.0)
+
 ## 0.1.0
 
 ### &nbsp;&nbsp;&nbsp;Breaking Changes
