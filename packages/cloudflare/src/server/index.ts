@@ -1,5 +1,6 @@
 import { McpAgent } from "agents/mcp";
 import { server, setupServer } from "bundlephobia-mcp";
+import { Hono } from "hono";
 
 export class BundlephobiaAgent extends McpAgent {
   server = server;
@@ -10,6 +11,16 @@ export class BundlephobiaAgent extends McpAgent {
   }
 }
 
-export default BundlephobiaAgent.mount("/mcp", {
-  binding: "BUNDLEPHOBIA_AGENT",
-});
+const app = new Hono();
+
+app.mount(
+  "/sse",
+  BundlephobiaAgent.serveSSE("/sse", {
+    binding: "BUNDLEPHOBIA_AGENT",
+  }).fetch,
+  {
+    replaceRequest: false,
+  },
+);
+
+export default app;
