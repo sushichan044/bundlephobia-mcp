@@ -11,39 +11,4 @@ Powered by [bundlephobia.com](https://bundlephobia.com/)
 
 ## Configure SSE server
 
-### JSON config
-
-```json
-"bundlephobia": {
-  "type": "sse",
-  "url": "https://bundlephobia-mcp.sushichan044.workers.dev/mcp"
-}
-```
-
-### VSCode
-
-```bash
-code --add-mcp '{"bundlephobia":{"type":"sse","url":"https://bundlephobia-mcp.sushichan044.workers.dev/mcp"}}'
-```
-
-<details>
-  <summary>Use stdio server (not recommended)</summary>
-   Deno
-
-```json
-"bundlephobia": {
-  "command": "deno",
-  "args": ["run", "--allow-net=bundlephobia.com", "npm:bundlephobia-mcp"]
-}
-```
-
-npx
-
-```json
-"bundlephobia": {
-  "command": "npx",
-  "args": ["bundlephobia-mcp"]
-}
-```
-
-</details>
+See docs: https://bundlephobia-mcp.sushichan044.workers.dev
