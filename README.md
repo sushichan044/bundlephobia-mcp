@@ -9,6 +9,6 @@ Powered by [bundlephobia.com](https://bundlephobia.com/)
 > [!NOTE]
 > Support for StreamableHTTPServerTransport will be available in the future.
 
-## Configure SSE server
+## Configuration / Usage
 
 See docs: https://bundlephobia-mcp.sushichan044.workers.dev
