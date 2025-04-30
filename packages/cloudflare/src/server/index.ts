@@ -23,4 +23,14 @@ app.mount(
   },
 );
 
+app.mount(
+  "/mcp",
+  BundlephobiaAgent.serve("/mcp", {
+    binding: "BUNDLEPHOBIA_AGENT",
+  }).fetch,
+  {
+    replaceRequest: false,
+  },
+);
+
 export default app;
