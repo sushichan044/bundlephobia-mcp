@@ -20,7 +20,7 @@ const getSSEConfig = (sseEndpoint: string) => ({
 function App() {
   const baseUrl = useBaseUrl();
 
-  const sseEndpoint = useMemo(() => new URL("/mcp", baseUrl).href, [baseUrl]);
+  const sseEndpoint = useMemo(() => new URL("/sse", baseUrl).href, [baseUrl]);
   // for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const httpStreamEndpoint = useMemo(
@@ -62,15 +62,35 @@ function App() {
               <p className="text-blue-700 flex items-center">
                 <Fa6SolidCircleInfo className="h-5 w-5 mr-2 text-current" />
                 <span>
-                  Support for StreamableHTTPServerTransport will be available in
-                  the future.
+                  Support for StreamableHTTPServerTransport is implemented. But
+                  not available for most MCP Clients, So it is not documented.
                 </span>
               </p>
             </div>
           </article>
 
+          {/* <article className="prose prose-slate">
+            <h2>Configuration for Streamable HTTP Transport</h2>
+            <div>
+              <h3>Edit json configuration</h3>
+              <CodeBlock
+                className="not-prose"
+                snippet={sseConfigSnippet.json}
+                title="mcp.json"
+              />
+            </div>
+            <div>
+              <h3>Add to VSCode</h3>
+              <CodeBlock
+                className="not-prose"
+                snippet={sseConfigSnippet.vscodeCommand}
+                title="VSCode CLI"
+              />
+            </div>
+          </article> */}
+
           <article className="prose prose-slate">
-            <h2>Configuration</h2>
+            <h2>Configuration for SSE Transport</h2>
             <div>
               <h3>Edit json configuration</h3>
               <CodeBlock
