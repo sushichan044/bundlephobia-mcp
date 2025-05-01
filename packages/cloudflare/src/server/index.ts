@@ -15,8 +15,6 @@ const app = new Hono();
 
 app.mount(
   "/sse",
-  // TODO: fix agents package
-  // eslint-disable-next-line @typescript-eslint/unbound-method
   BundlephobiaAgent.serveSSE("/sse", {
     binding: "BUNDLEPHOBIA_AGENT",
   }).fetch,
@@ -27,8 +25,6 @@ app.mount(
 
 app.mount(
   "/mcp",
-  // TODO: fix agents package
-  // eslint-disable-next-line @typescript-eslint/unbound-method
   BundlephobiaAgent.serve("/mcp", {
     binding: "BUNDLEPHOBIA_AGENT",
   }).fetch,
