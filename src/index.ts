@@ -3,18 +3,18 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { PKG_NAME, PKG_VERSION } from "./constants";
 import { getNpmPackageInfo, getNpmPackageInfoHistory } from "./tools";
 
-export const server = new McpServer({
-  description:
-    "Fetch information about the bundle size and dependencies of npm packages. Or retrieve those information over the past versions.",
-  name: PKG_NAME,
-  version: PKG_VERSION,
-});
-
 /**
  * Attach all tools to the server.
  * @param server - The server to attach the tools to.
  */
-export const setupServer = (server: McpServer): void => {
+export const createServer = (): McpServer => {
+  const server = new McpServer({
+    description:
+      "Fetch information about the bundle size and dependencies of npm packages. Or retrieve those information over the past versions.",
+    name: PKG_NAME,
+    version: PKG_VERSION,
+  });
+
   server.tool(
     getNpmPackageInfo.name,
     getNpmPackageInfo.description,
@@ -70,4 +70,6 @@ export const setupServer = (server: McpServer): void => {
       }
     },
   );
+
+  return server;
 };
