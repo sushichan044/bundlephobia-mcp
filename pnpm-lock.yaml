@@ -112,8 +112,8 @@ importers:
   packages/cloudflare:
     dependencies:
       agents:
-        specifier: 0.0.75
-        version: 0.0.75(@cloudflare/workers-types@4.20250419.0)(react@19.1.0)
+        specifier: 0.0.76
+        version: 0.0.76(@cloudflare/workers-types@4.20250419.0)(react@19.1.0)
       bundlephobia-mcp:
         specifier: workspace:*
         version: link:../..
@@ -212,8 +212,8 @@ packages:
     resolution: {integrity: sha512-qZMxYJ0qqX/RfnuIaab+zp8UAeJn/ygXXAffR5I4N0n1IrvA6qBsjc8hXLmBiMV2zoXlifkacF7sEFnYnjBcqg==}
     engines: {node: '>=18'}
 
-  '@ai-sdk/react@1.2.9':
-    resolution: {integrity: sha512-/VYm8xifyngaqFDLXACk/1czDRCefNCdALUyp+kIX6DUIYUWTM93ISoZ+qJ8+3E+FiJAKBQz61o8lIIl+vYtzg==}
+  '@ai-sdk/react@1.2.11':
+    resolution: {integrity: sha512-+kPqLkJ3TWP6czaJPV+vzAKSUcKQ1598BUrcLHt56sH99+LhmIIW3ylZp0OfC3O6TR3eO1Lt0Yzw4R0mK6g9Gw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
@@ -222,8 +222,8 @@ packages:
       zod:
         optional: true
 
-  '@ai-sdk/ui-utils@1.2.8':
-    resolution: {integrity: sha512-nls/IJCY+ks3Uj6G/agNhXqQeLVqhNfoJbuNgCny+nX2veY5ADB91EcZUqVeQ/ionul2SeUswPY6Q/DxteY29Q==}
+  '@ai-sdk/ui-utils@1.2.10':
+    resolution: {integrity: sha512-GUj+LBoAlRQF1dL/M49jtufGqtLOMApxTpCmVjoRpIPt/dFALVL9RfqfvxwztyIwbK+IxGzcYjSGRsrWrj+86g==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.23.8
@@ -1878,13 +1878,13 @@ packages:
     resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
     engines: {node: '>= 14'}
 
-  agents@0.0.75:
-    resolution: {integrity: sha512-cIqG9GFR+FtP5kuw/804h89y2+fDlMTF2jFySkMRC6ymKT6iyFB5qKkzVAyKPNTjdUkQciHkRYzWuyLYTvHebw==}
+  agents@0.0.76:
+    resolution: {integrity: sha512-d3/g55heptq3BsC2cHnmgmZu9LG5dUucoYMh+yeY3yGM9rHijBkFWCXsK8cKQ8hkg01aorOk9UjLGUnSSqGt4w==}
     peerDependencies:
       react: '*'
 
-  ai@4.3.10:
-    resolution: {integrity: sha512-jw+ahNu+T4SHj9gtraIKtYhanJI6gj2IZ5BFcfEHgoyQVMln5a5beGjzl/nQSX6FxyLqJ/UBpClRa279EEKK/Q==}
+  ai@4.3.13:
+    resolution: {integrity: sha512-cC5HXItuOwGykSMacCPzNp6+NMTxeuTjOenztVgSJhdC9Z4OrzBxwkyeDAf4h1QP938ZFi7IBdq3u4lxVoVmvw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19 || ^19.0.0-rc
@@ -5058,17 +5058,17 @@ snapshots:
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/react@1.2.9(react@19.1.0)(zod@3.24.3)':
+  '@ai-sdk/react@1.2.11(react@19.1.0)(zod@3.24.3)':
     dependencies:
       '@ai-sdk/provider-utils': 2.2.7(zod@3.24.3)
-      '@ai-sdk/ui-utils': 1.2.8(zod@3.24.3)
+      '@ai-sdk/ui-utils': 1.2.10(zod@3.24.3)
       react: 19.1.0
       swr: 2.3.3(react@19.1.0)
       throttleit: 2.1.0
     optionalDependencies:
       zod: 3.24.3
 
-  '@ai-sdk/ui-utils@1.2.8(zod@3.24.3)':
+  '@ai-sdk/ui-utils@1.2.10(zod@3.24.3)':
     dependencies:
       '@ai-sdk/provider': 1.1.3
       '@ai-sdk/provider-utils': 2.2.7(zod@3.24.3)
@@ -6563,10 +6563,10 @@ snapshots:
 
   agent-base@7.1.3: {}
 
-  agents@0.0.75(@cloudflare/workers-types@4.20250419.0)(react@19.1.0):
+  agents@0.0.76(@cloudflare/workers-types@4.20250419.0)(react@19.1.0):
     dependencies:
       '@modelcontextprotocol/sdk': 1.10.2
-      ai: 4.3.10(react@19.1.0)(zod@3.24.3)
+      ai: 4.3.13(react@19.1.0)(zod@3.24.3)
       cron-schedule: 5.0.4
       nanoid: 5.1.5
       partyserver: 0.0.68(@cloudflare/workers-types@4.20250419.0)
@@ -6577,12 +6577,12 @@ snapshots:
       - '@cloudflare/workers-types'
       - supports-color
 
-  ai@4.3.10(react@19.1.0)(zod@3.24.3):
+  ai@4.3.13(react@19.1.0)(zod@3.24.3):
     dependencies:
       '@ai-sdk/provider': 1.1.3
       '@ai-sdk/provider-utils': 2.2.7(zod@3.24.3)
-      '@ai-sdk/react': 1.2.9(react@19.1.0)(zod@3.24.3)
-      '@ai-sdk/ui-utils': 1.2.8(zod@3.24.3)
+      '@ai-sdk/react': 1.2.11(react@19.1.0)(zod@3.24.3)
+      '@ai-sdk/ui-utils': 1.2.10(zod@3.24.3)
       '@opentelemetry/api': 1.9.0
       jsondiffpatch: 0.6.0
       zod: 3.24.3
