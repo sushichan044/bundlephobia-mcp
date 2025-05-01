@@ -1,14 +1,12 @@
 import { McpAgent } from "agents/mcp";
-import { server, setupServer } from "bundlephobia-mcp";
+import { createServer } from "bundlephobia-mcp";
 import { Hono } from "hono";
 
 export class BundlephobiaAgent extends McpAgent {
-  server = server;
+  server = createServer();
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  override async init(): Promise<void> {
-    setupServer(this.server);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  override async init(): Promise<void> {}
 }
 
 const app = new Hono();
