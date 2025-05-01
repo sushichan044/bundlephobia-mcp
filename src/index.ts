@@ -4,8 +4,7 @@ import { PKG_NAME, PKG_VERSION } from "./constants";
 import { getNpmPackageInfo, getNpmPackageInfoHistory } from "./tools";
 
 /**
- * Attach all tools to the server.
- * @param server - The server to attach the tools to.
+ * Create a new instance of Bundlephobia MCP server.
  */
 export const createServer = (): McpServer => {
   const server = new McpServer({
