@@ -1,0 +1,21 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# project structure guide
+
+## Directories
+
+- [src/](mdc:src)
+  - Contains MCP Server implementation.
+  - [api/](mdc:src/api)
+    - Wrappers for external APIs (Bundlephobia).
+  - [mcp/](mdc:src/mcp)
+    - Wrappers of MCP SDK.
+    - [transport/](mdc:src/mcp/transport): Implements wrapper of the communication transport layer.
+
+- [packages/cloudflare/](mdc:packages/cloudflare)
+  - Contains Remote MCP Server implementation on Cloudflare Workers. Uses MCPServer implementation from [src/](mdc:src) .
+  - [index.ts](mdc:packages/cloudflare/src/server/index.ts): Entrypoint of Cloudflare Workers.
+  - [App.tsx](mdc:packages/cloudflare/src/App.tsx): Entrypoint of Remote MCP Documentation web page.
