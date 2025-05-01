@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+*No significant changes*
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.2.0...0.2.1)
+
 ## 0.2.0
 
 ### &nbsp;&nbsp;&nbsp;Breaking Changes
