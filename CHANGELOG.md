@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.2
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Mcp tool annotation &nbsp;-&nbsp; by **sushichan044** [<samp>(49a62)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/49a6298)
+- Add configuration instruction for HTTP Streamable Transport &nbsp;-&nbsp; by **sushichan044** [<samp>(8e232)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/8e232e9)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.2.1...0.2.2)
+
 ## 0.2.1
 
 *No significant changes*
