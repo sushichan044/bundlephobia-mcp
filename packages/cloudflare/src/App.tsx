@@ -10,6 +10,8 @@ import { Meta } from "./components/Meta";
 import { useBaseUrl } from "./hooks/useBaseUrl";
 import { useMCPConfigSnippet } from "./hooks/useConfigString";
 
+// https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format
+
 const getSSEConfig = (sseEndpoint: string) => ({
   bundlephobia: {
     type: "sse",
@@ -17,12 +19,17 @@ const getSSEConfig = (sseEndpoint: string) => ({
   },
 });
 
+const getHTTPStreamConfig = (httpStreamEndpoint: string) => ({
+  bundlephobia: {
+    type: "http",
+    url: httpStreamEndpoint,
+  },
+});
+
 function App() {
   const baseUrl = useBaseUrl();
 
   const sseEndpoint = useMemo(() => new URL("/sse", baseUrl).href, [baseUrl]);
-  // for future use
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const httpStreamEndpoint = useMemo(
     () => new URL("/mcp", baseUrl).href,
     [baseUrl],
@@ -30,6 +37,12 @@ function App() {
 
   const sseConfig = useMemo(() => getSSEConfig(sseEndpoint), [sseEndpoint]);
   const sseConfigSnippet = useMCPConfigSnippet(sseConfig);
+
+  const httpStreamConfig = useMemo(
+    () => getHTTPStreamConfig(httpStreamEndpoint),
+    [httpStreamEndpoint],
+  );
+  const httpStreamConfigSnippet = useMCPConfigSnippet(httpStreamConfig);
 
   return (
     <>
@@ -69,13 +82,13 @@ function App() {
             </div>
           </article>
 
-          {/* <article className="prose prose-slate">
+          <article className="prose prose-slate">
             <h2>Configuration for Streamable HTTP Transport</h2>
             <div>
               <h3>Edit json configuration</h3>
               <CodeBlock
                 className="not-prose"
-                snippet={sseConfigSnippet.json}
+                snippet={httpStreamConfigSnippet.json}
                 title="mcp.json"
               />
             </div>
@@ -83,11 +96,11 @@ function App() {
               <h3>Add to VSCode</h3>
               <CodeBlock
                 className="not-prose"
-                snippet={sseConfigSnippet.vscodeCommand}
+                snippet={httpStreamConfigSnippet.vscodeCommand}
                 title="VSCode CLI"
               />
             </div>
-          </article> */}
+          </article>
 
           <article className="prose prose-slate">
             <h2>Configuration for SSE Transport</h2>
