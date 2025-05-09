@@ -11,6 +11,9 @@ patchedDependencies:
   bumpp@9.11.1: patches/bumpp@9.11.1.patch
 
 catalogs:
+  mcp:
+    "@modelcontextprotocol/sdk": 1.11.1
+    agents: 0.0.80
   dev:
     "@types/node": 22.14.1
     "@virtual-live-lab/eslint-config": 2.2.21
