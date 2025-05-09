@@ -45,6 +45,14 @@ export const createServer = (): McpServer => {
         .string()
         .describe("The name of the npm package to get information about."),
     },
+
+    {
+      destructiveHint: false,
+      openWorldHint: true,
+      readOnlyHint: true,
+      title: "Get information about an npm package",
+    },
+
     async ({ name }) => {
       try {
         if (!isNonEmptyString(name)) {
@@ -119,6 +127,13 @@ export const createServer = (): McpServer => {
         .string()
         .describe("The name of the npm package to get information about."),
     },
+    {
+      destructiveHint: false,
+      openWorldHint: true,
+      readOnlyHint: true,
+      title: "Get a version history of npm packages",
+    },
+
     async ({ name }) => {
       try {
         if (!isNonEmptyString(name)) {
