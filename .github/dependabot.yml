@@ -21,6 +21,13 @@ updates:
     groups:
       # TIP: 複数の group にマッチする場合最初の group が適用される
       # なので、より詳細な group を先に書く
+      mcp:
+        patterns:
+          - "@modelcontextprotocol/sdk"
+          - "agents"
+        update-types:
+          - "minor"
+          - "patch"
       typescript:
         patterns:
           - "typescript"
