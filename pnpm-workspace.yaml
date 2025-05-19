@@ -12,8 +12,8 @@ patchedDependencies:
 
 catalogs:
   mcp:
-    "@modelcontextprotocol/sdk": 1.11.1
-    agents: 0.0.80
+    "@modelcontextprotocol/sdk": 1.11.4
+    agents: 0.0.88
   dev:
     "@types/node": 22.15.19
     "@virtual-live-lab/eslint-config": 2.2.21
