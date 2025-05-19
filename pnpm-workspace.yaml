@@ -7,9 +7,6 @@ onlyBuiltDependencies:
   - sharp
   - workerd
 
-patchedDependencies:
-  bumpp@9.11.1: patches/bumpp@9.11.1.patch
-
 catalogs:
   mcp:
     "@modelcontextprotocol/sdk": 1.11.4
