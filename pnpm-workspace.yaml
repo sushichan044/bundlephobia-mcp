@@ -19,16 +19,16 @@ catalogs:
     "@virtual-live-lab/eslint-config": 2.2.21
     "@virtual-live-lab/prettier-config": 2.0.19
     "@virtual-live-lab/tsconfig": 2.1.20
-    eslint: 9.24.0
+    eslint: 9.27.0
     eslint-plugin-react-hooks: 5.2.0
-    pkg-pr-new: 0.0.42
+    pkg-pr-new: 0.0.50
     prettier: 3.5.3
     release-it: 18.1.2
-    release-it-pnpm: 4.6.4
+    release-it-pnpm: 4.6.5
     typescript: 5.8.3
-    typescript-eslint: 8.30.1
+    typescript-eslint: 8.32.1
   react:
-    "@types/react": 19.1.2
-    "@types/react-dom": 19.1.2
+    "@types/react": 19.1.4
+    "@types/react-dom": 19.1.5
     react: 19.1.0
     react-dom: 19.1.0
