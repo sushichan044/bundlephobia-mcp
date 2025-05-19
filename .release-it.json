@@ -1,7 +1,8 @@
 {
-  "$schema": "https://unpkg.com/release-it@18/schema/release-it.json",
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
   "git": {
-    "commitMessage": "chore: release ${version}"
+    "commitMessage": "chore: release ${version}",
+    "tagName": "${version}"
   },
   "plugins": {
     "release-it-pnpm": {
