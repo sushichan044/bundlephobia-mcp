@@ -1,34 +1,27 @@
-import { McpAgent } from "agents/mcp";
+import { StreamableHTTPTransport } from "@hono/mcp";
 import { createServer } from "bundlephobia-mcp";
 import { Hono } from "hono";
 
-export class BundlephobiaAgent extends McpAgent {
-  server = createServer();
+type HonoConfig = {
+  Variables: {
+    mcpServer: ReturnType<typeof createServer>;
+  };
+};
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  override async init(): Promise<void> {}
-}
+const app = new Hono<HonoConfig>();
 
-const app = new Hono();
+app.use(async (c, next) => {
+  const mcpServer = createServer();
+  c.set("mcpServer", mcpServer);
+  await next();
+});
 
-app.mount(
-  "/sse",
-  BundlephobiaAgent.serveSSE("/sse", {
-    binding: "BUNDLEPHOBIA_AGENT",
-  }).fetch,
-  {
-    replaceRequest: false,
-  },
-);
+app.all("/mcp", async (c) => {
+  const transport = new StreamableHTTPTransport();
 
-app.mount(
-  "/mcp",
-  BundlephobiaAgent.serve("/mcp", {
-    binding: "BUNDLEPHOBIA_AGENT",
-  }).fetch,
-  {
-    replaceRequest: false,
-  },
-);
+  await c.get("mcpServer").connect(transport);
+
+  return transport.handleRequest(c);
+});
 
 export default app;

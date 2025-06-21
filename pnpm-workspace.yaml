@@ -10,7 +10,7 @@ onlyBuiltDependencies:
 catalogs:
   mcp:
     "@modelcontextprotocol/sdk": 1.13.0
-    agents: 0.0.95
+    "@hono/mcp": 0.1.0
   dev:
     "@types/node": 22.15.19
     "@virtual-live-lab/eslint-config": 2.2.21

@@ -11,16 +11,12 @@
     {
       "new_sqlite_classes": ["BundlephobiaAgent"],
       "tag": "v1"
+    },
+    {
+      "deleted_classes": ["BundlephobiaAgent"],
+      "tag": "v2"
     }
   ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "BundlephobiaAgent",
-        "name": "BUNDLEPHOBIA_AGENT"
-      }
-    ]
-  },
   "observability": {
     "enabled": true
   }

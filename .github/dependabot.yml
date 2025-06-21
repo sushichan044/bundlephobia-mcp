@@ -24,7 +24,7 @@ updates:
       mcp:
         patterns:
           - "@modelcontextprotocol/sdk"
-          - "agents"
+          - "@hono/mcp"
         update-types:
           - "minor"
           - "patch"
