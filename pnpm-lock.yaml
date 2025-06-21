@@ -47,8 +47,8 @@ catalogs:
       specifier: 1.13.0
       version: 1.13.0
     agents:
-      specifier: 0.0.88
-      version: 0.0.88
+      specifier: 0.0.95
+      version: 0.0.95
   react:
     '@types/react':
       specifier: 19.1.4
@@ -82,7 +82,7 @@ importers:
         version: 22.15.19
       '@virtual-live-lab/eslint-config':
         specifier: catalog:dev
-        version: 2.2.21(@typescript-eslint/parser@8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))(tailwindcss@4.1.6)(typescript@5.8.3)
+        version: 2.2.21(@typescript-eslint/parser@8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))(tailwindcss@4.1.6)(typescript@5.8.3)
       '@virtual-live-lab/prettier-config':
         specifier: catalog:dev
         version: 2.0.19(prettier@3.5.3)
@@ -118,7 +118,7 @@ importers:
     dependencies:
       agents:
         specifier: catalog:mcp
-        version: 0.0.88(@cloudflare/workers-types@4.20250614.0)(react@19.1.0)
+        version: 0.0.95(@cloudflare/workers-types@4.20250614.0)(react@19.1.0)
       bundlephobia-mcp:
         specifier: workspace:*
         version: link:../..
@@ -1056,10 +1056,6 @@ packages:
   '@mjackson/node-fetch-server@0.6.1':
     resolution: {integrity: sha512-9ZJnk/DJjt805uv5PPv11haJIW+HHf3YEEyVXv+8iLQxLD/iXA68FH220XoiTPBC4gCg5q+IMadDw8qPqlA5wg==}
 
-  '@modelcontextprotocol/sdk@1.12.3':
-    resolution: {integrity: sha512-DyVYSOafBvk3/j1Oka4z5BWT8o4AFmoNyZY9pALOm7Lh3GZglR71Co4r4dEUoqDWdDazIZQHBe7J2Nwkg6gHgQ==}
-    engines: {node: '>=18'}
-
   '@modelcontextprotocol/sdk@1.13.0':
     resolution: {integrity: sha512-P5FZsXU0kY881F6Hbk9GhsYx02/KgWK1DYf7/tyE/1lcFKhDYPQR9iYjhQXJn+Sg6hQleMo3DB7h7+p4wgp2Lw==}
     engines: {node: '>=18'}
@@ -1842,8 +1838,8 @@ packages:
     resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
     engines: {node: '>= 14'}
 
-  agents@0.0.88:
-    resolution: {integrity: sha512-ysQ3LMONALxx1VL0X/Tq49EzfuuLj1SHfztCCIfAX8hVtYw2Jr9rytnM94lZQ29yFFqmcIKWR+D13j/l7Cyf8A==}
+  agents@0.0.95:
+    resolution: {integrity: sha512-qj0GVnoyjhj9gGgulShlMYvF6xDI2PpmeE7rpFCWkLxbeJPecUwmDU9Vm7F8ub9Yt58zieA3F0zASx/Z50aYhA==}
     peerDependencies:
       react: '*'
 
@@ -5546,22 +5542,6 @@ snapshots:
 
   '@mjackson/node-fetch-server@0.6.1': {}
 
-  '@modelcontextprotocol/sdk@1.12.3':
-    dependencies:
-      ajv: 6.12.6
-      content-type: 1.0.5
-      cors: 2.8.5
-      cross-spawn: 7.0.6
-      eventsource: 3.0.7
-      express: 5.1.0
-      express-rate-limit: 7.5.0(express@5.1.0)
-      pkce-challenge: 5.0.0
-      raw-body: 3.0.0
-      zod: 3.25.28
-      zod-to-json-schema: 3.24.5(zod@3.25.28)
-    transitivePeerDependencies:
-      - supports-color
-
   '@modelcontextprotocol/sdk@1.13.0':
     dependencies:
       ajv: 6.12.6
@@ -6267,38 +6247,6 @@ snapshots:
       '@typescript-eslint/types': 8.34.0
       eslint-visitor-keys: 4.2.1
 
-  '@virtual-live-lab/eslint-config@2.2.21(@typescript-eslint/parser@8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))(tailwindcss@4.1.6)(typescript@5.8.3)':
-    dependencies:
-      '@astrojs/compiler': 2.11.0
-      '@eslint/compat': 1.2.8(eslint@9.27.0(jiti@2.4.2))
-      '@eslint/eslintrc': 3.3.1
-      '@eslint/js': 9.24.0
-      '@stylistic/eslint-plugin-ts': 4.2.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
-      '@typescript-eslint/utils': 8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
-      astro-eslint-parser: 1.2.2
-      astrojs-compiler-sync: 1.1.1(@astrojs/compiler@2.11.0)
-      eslint: 9.27.0(jiti@2.4.2)
-      eslint-config-flat-gitignore: 2.1.0(eslint@9.27.0(jiti@2.4.2))
-      eslint-config-prettier: 10.1.2(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-astro: 1.3.1(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-jsx-a11y: 6.10.2(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-perfectionist: 4.11.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
-      eslint-plugin-react: 7.37.5(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-react-hooks: 5.2.0(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-react-refresh: 0.4.19(eslint@9.27.0(jiti@2.4.2))
-      eslint-plugin-tailwindcss: 3.18.0(tailwindcss@4.1.6)
-      globals: 16.0.0
-      pkg-dir: 8.0.0
-      typescript-eslint: 8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
-      typescript-eslint-parser-for-extra-files: 0.8.0(@typescript-eslint/parser@8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(astrojs-compiler-sync@1.1.1(@astrojs/compiler@2.11.0))(typescript@5.8.3)
-    transitivePeerDependencies:
-      - '@typescript-eslint/parser'
-      - supports-color
-      - svelte2tsx
-      - tailwindcss
-      - typescript
-      - vue
-
   '@virtual-live-lab/eslint-config@2.2.21(@typescript-eslint/parser@8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))(tailwindcss@4.1.6)(typescript@5.8.3)':
     dependencies:
       '@astrojs/compiler': 2.11.0
@@ -6406,9 +6354,9 @@ snapshots:
 
   agent-base@7.1.3: {}
 
-  agents@0.0.88(@cloudflare/workers-types@4.20250614.0)(react@19.1.0):
+  agents@0.0.95(@cloudflare/workers-types@4.20250614.0)(react@19.1.0):
     dependencies:
-      '@modelcontextprotocol/sdk': 1.12.3
+      '@modelcontextprotocol/sdk': 1.13.0
       ai: 4.3.16(react@19.1.0)(zod@3.25.28)
       cron-schedule: 5.0.4
       nanoid: 5.1.5
@@ -9470,14 +9418,6 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
-
-  typescript-eslint-parser-for-extra-files@0.8.0(@typescript-eslint/parser@8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(astrojs-compiler-sync@1.1.1(@astrojs/compiler@2.11.0))(typescript@5.8.3):
-    dependencies:
-      '@typescript-eslint/parser': 8.29.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
-      tinyglobby: 0.2.14
-    optionalDependencies:
-      astrojs-compiler-sync: 1.1.1(@astrojs/compiler@2.11.0)
-      typescript: 5.8.3
 
   typescript-eslint-parser-for-extra-files@0.8.0(@typescript-eslint/parser@8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(astrojs-compiler-sync@1.1.1(@astrojs/compiler@2.11.0))(typescript@5.8.3):
     dependencies:
