@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@hono/mcp": "catalog:mcp",
+    "agents": "0.0.95",
     "bundlephobia-mcp": "workspace:*",
     "clsx": "2.1.1",
     "hono": "4.7.10",
