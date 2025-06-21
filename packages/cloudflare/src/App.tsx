@@ -11,14 +11,6 @@ import { useBaseUrl } from "./hooks/useBaseUrl";
 import { useMCPConfigSnippet } from "./hooks/useConfigString";
 
 // https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format
-
-const getSSEConfig = (sseEndpoint: string) => ({
-  bundlephobia: {
-    type: "sse",
-    url: sseEndpoint,
-  },
-});
-
 const getHTTPStreamConfig = (httpStreamEndpoint: string) => ({
   bundlephobia: {
     type: "http",
@@ -29,14 +21,10 @@ const getHTTPStreamConfig = (httpStreamEndpoint: string) => ({
 function App() {
   const baseUrl = useBaseUrl();
 
-  const sseEndpoint = useMemo(() => new URL("/sse", baseUrl).href, [baseUrl]);
   const httpStreamEndpoint = useMemo(
     () => new URL("/mcp", baseUrl).href,
     [baseUrl],
   );
-
-  const sseConfig = useMemo(() => getSSEConfig(sseEndpoint), [sseEndpoint]);
-  const sseConfigSnippet = useMCPConfigSnippet(sseConfig);
 
   const httpStreamConfig = useMemo(
     () => getHTTPStreamConfig(httpStreamEndpoint),
@@ -93,30 +81,20 @@ function App() {
               />
             </div>
             <div>
+              <h3>Add to Cursor</h3>
+              <a href="https://cursor.com/install-mcp?name=bundlephobia&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYnVuZGxlcGhvYmlhLW1jcC5zdXNoaWNoYW4wNDQud29ya2Vycy5kZXYvbWNwIn0%3D">
+                <img
+                  alt="Add bundlephobia MCP server to Cursor"
+                  height="32"
+                  src="https://cursor.com/deeplink/mcp-install-dark.svg"
+                />
+              </a>
+            </div>
+            <div>
               <h3>Add to VSCode</h3>
               <CodeBlock
                 className="not-prose"
                 snippet={httpStreamConfigSnippet.vscodeCommand}
-                title="VSCode CLI"
-              />
-            </div>
-          </article>
-
-          <article className="prose prose-slate">
-            <h2>Configuration for SSE Transport</h2>
-            <div>
-              <h3>Edit json configuration</h3>
-              <CodeBlock
-                className="not-prose"
-                snippet={sseConfigSnippet.json}
-                title="mcp.json"
-              />
-            </div>
-            <div>
-              <h3>Add to VSCode</h3>
-              <CodeBlock
-                className="not-prose"
-                snippet={sseConfigSnippet.vscodeCommand}
                 title="VSCode CLI"
               />
             </div>
