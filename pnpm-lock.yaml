@@ -121,7 +121,7 @@ importers:
     dependencies:
       '@hono/mcp':
         specifier: catalog:mcp
-        version: 0.1.0(@modelcontextprotocol/sdk@1.13.0)(hono@4.7.10)
+        version: 0.1.0(@modelcontextprotocol/sdk@1.13.0)(hono@4.8.2)
       bundlephobia-mcp:
         specifier: workspace:*
         version: link:../..
@@ -129,8 +129,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       hono:
-        specifier: 4.7.10
-        version: 4.7.10
+        specifier: 4.8.2
+        version: 4.8.2
       react:
         specifier: catalog:react
         version: 19.1.0
@@ -2957,8 +2957,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hono@4.7.10:
-    resolution: {integrity: sha512-QkACju9MiN59CKSY5JsGZCYmPZkA6sIW6OFCUp7qDjZu6S6KHtJHhAc9Uy9mV9F8PJ1/HQ3ybZF2yjCa/73fvQ==}
+  hono@4.8.2:
+    resolution: {integrity: sha512-hM+1RIn9PK1I6SiTNS6/y7O1mvg88awYLFEuEtoiMtRyT3SD2iu9pSFgbBXT3b1Ua4IwzvSTLvwO0SEhDxCi4w==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -5306,10 +5306,10 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@hono/mcp@0.1.0(@modelcontextprotocol/sdk@1.13.0)(hono@4.7.10)':
+  '@hono/mcp@0.1.0(@modelcontextprotocol/sdk@1.13.0)(hono@4.8.2)':
     dependencies:
       '@modelcontextprotocol/sdk': 1.13.0
-      hono: 4.7.10
+      hono: 4.8.2
 
   '@humanfs/core@0.19.1': {}
 
@@ -7832,7 +7832,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono@4.7.10: {}
+  hono@4.8.2: {}
 
   hookable@5.5.3: {}
 
