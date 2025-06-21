@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.5
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Define zod schemas corresponding to types &nbsp;-&nbsp; by **sushichan044** [<samp>(9dc74)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/9dc747a)
+- Define utility to build structured output &nbsp;-&nbsp; by **sushichan044** [<samp>(5246c)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/5246ce9)
+- Use structured output &nbsp;-&nbsp; by **sushichan044** [<samp>(6703a)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/6703acd)
+- Use hono/mcp &nbsp;-&nbsp; by **sushichan044** [<samp>(21574)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/2157439)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Add missing top-level `parse` key &nbsp;-&nbsp; by **sushichan044** [<samp>(6994a)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/6994ae3)
+- Return structured error from api layer &nbsp;-&nbsp; by **sushichan044** [<samp>(0a189)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/0a18997)
+- Add deleted_classes migration &nbsp;-&nbsp; by **sushichan044** [<samp>(d88df)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/d88df1c)
+- Remain BundlephobiaAgent class definition for gradual migration &nbsp;-&nbsp; by **sushichan044** [<samp>(c6021)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/c602128)
+- Remain BundlephobiaAgent class definition for gradual migration" &nbsp;-&nbsp; by **sushichan044** [<samp>(f2ab2)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/f2ab23b)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.2.4...0.2.5)
+
 ## 0.2.4
 
 *No significant changes*
