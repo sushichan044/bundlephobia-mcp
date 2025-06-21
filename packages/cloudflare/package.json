@@ -17,7 +17,7 @@
     "postinstall": "wrangler types"
   },
   "dependencies": {
-    "agents": "catalog:mcp",
+    "@hono/mcp": "catalog:mcp",
     "bundlephobia-mcp": "workspace:*",
     "clsx": "2.1.1",
     "hono": "4.7.10",
