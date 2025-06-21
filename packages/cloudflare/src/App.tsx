@@ -8,7 +8,7 @@ import { CodeBlock } from "./components/CodeBlock";
 import { InstallToCursor } from "./components/InstallToCursor";
 import { Meta } from "./components/Meta";
 import { useBaseUrl } from "./hooks/useBaseUrl";
-import { useMCPConfigSnippet } from "./hooks/useConfigString";
+import { createMCPConfigSnippet } from "./utils/configSnippet";
 
 const MCP_CONFIG_SERVER_NAME = "bundlephobia";
 
@@ -20,12 +20,15 @@ function App() {
     [baseUrl],
   );
 
-  const httpStreamConfigSnippet = useMCPConfigSnippet(MCP_CONFIG_SERVER_NAME, {
-    type: "http",
-    url: httpStreamEndpoint,
-  });
+  const httpStreamConfigSnippet = createMCPConfigSnippet(
+    MCP_CONFIG_SERVER_NAME,
+    {
+      type: "http",
+      url: httpStreamEndpoint,
+    },
+  );
 
-  const npxStdioSnippet = useMCPConfigSnippet(MCP_CONFIG_SERVER_NAME, {
+  const npxStdioSnippet = createMCPConfigSnippet(MCP_CONFIG_SERVER_NAME, {
     args: ["bundlephobia-mcp"],
     command: "npx",
     type: "stdio",

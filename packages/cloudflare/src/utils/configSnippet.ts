@@ -1,32 +1,20 @@
-import { useMemo } from "react";
-
 /**
  * Returns the MCP config as a json snippet or a vscode command to add the config to the current workspace.
  *
  * @param name The name of the MCP config.
  * @param rawConfig The MCP config as a json object without the name.
  */
-export const useMCPConfigSnippet = (
+export const createMCPConfigSnippet = (
   name: string,
   rawConfig: Record<string, unknown>,
 ) => {
-  const jsonWithName = useMemo(() => {
-    return {
-      [name]: rawConfig,
-    };
-  }, [name, rawConfig]);
+  const jsonWithName = {
+    [name]: rawConfig,
+  };
 
-  const prettyJSON = useMemo(() => {
-    return JSON.stringify(jsonWithName, null, 2);
-  }, [jsonWithName]);
-
-  const vscodeCommand = useMemo(() => {
-    return `code --add-mcp '${JSON.stringify(jsonWithName)}'`;
-  }, [jsonWithName]);
-
-  const cursorInstallLink = useMemo(() => {
-    return buildCursorInstallLink(name, rawConfig);
-  }, [name, rawConfig]);
+  const prettyJSON = JSON.stringify(jsonWithName, null, 2);
+  const vscodeCommand = `code --add-mcp '${JSON.stringify(jsonWithName)}'`;
+  const cursorInstallLink = buildCursorInstallLink(name, rawConfig);
 
   return {
     cursorInstallLink,
@@ -36,6 +24,7 @@ export const useMCPConfigSnippet = (
 };
 
 /**
+ * Builds a cursor install link for the MCP config.
  *
  * @param name The name of the MCP config.
  * @param rawConfigJSON The MCP config as a json object without the name.
