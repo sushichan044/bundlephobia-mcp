@@ -16,7 +16,7 @@ export interface PackageStatsHistory {
   [version: string]: PackageStats | Record<string, never>;
 }
 
-export interface PackageBundle {
+interface PackageBundle {
   /**
    * `module` field
    */
@@ -45,7 +45,7 @@ interface PackageInfo {
   version: string;
 }
 
-export interface PackageAssets {
+interface PackageAssets {
   assets: AssetInfo[];
   dependencyCount: number;
   dependencySizes: DependencySize[];
