@@ -55,13 +55,15 @@ export interface PackageAssets {
   size: number;
 }
 
+type ParseTimeInfo = Partial<{
+  baseParseTime: number;
+  scriptParseTime: number;
+}>;
+
 type AssetInfo = {
   gzip: number;
   name: string;
-  parse?: Partial<{
-    baseParseTime: number;
-    scriptParseTime: number;
-  }>;
+  parse?: ParseTimeInfo | null;
   size: number;
   type: string;
 };
