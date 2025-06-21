@@ -1,8 +1,7 @@
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-
 import { ofetch } from "ofetch";
 
-import type { PackageStatsHistoryResponse } from "../../types";
+import type { StructuredError } from "../../structured-output";
+import type { PackageStatsHistory } from "../../types";
 
 export async function fetchPackageHistory(
   pkgName: string,
@@ -22,30 +21,18 @@ export function isPackageHistoryAPIErrorResponse(
   return "message" in response;
 }
 
-export function errorContentFromPackageHistoryAPIErrorResponse(
+export function structuredErrorOfPackageHistoryAPI(
   error: PackageHistoryAPIErrorResponse,
-): CallToolResult {
+): StructuredError {
   return {
-    content: [
-      {
-        text: [
-          "# ❌ Error Occurred",
-          "",
-          "Failed to fetch package history.",
-          "",
-          "## Error Details",
-          error.message,
-        ].join("\n"),
-        type: "text",
-      },
-    ],
-    isError: true,
+    code: error.type || "PackageHistoryError",
+    messages: [error.message],
   };
 }
 
 type ApiPackageHistoryResponse =
   | PackageHistoryAPIErrorResponse
-  | PackageStatsHistoryResponse;
+  | PackageStatsHistory;
 
 /**
  * 422
