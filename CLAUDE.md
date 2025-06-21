@@ -46,6 +46,7 @@ pnpm check
 ### Build Configuration
 
 The project uses unbuild with three entry points defined in `build.config.ts`:
+
 - Main MCP server
 - Stdio transport
 - CLI executable
@@ -56,9 +57,49 @@ The project uses unbuild with three entry points defined in `build.config.ts`:
 - `packages/cloudflare/` contains Cloudflare Workers frontend deployment
 - Uses pnpm workspace with catalog dependencies
 
+### Cloudflare Workers Remote MCP
+
+The `packages/cloudflare/` directory contains a Cloudflare Workers deployment that provides remote MCP access via HTTP transport. This allows the bundlephobia MCP server to be accessed over the web rather than requiring local installation.
+
+#### Key Components
+
+- **`src/server/index.ts`** - Hono-based HTTP server that exposes MCP via `/mcp` endpoint
+- **`wrangler.jsonc`** - Cloudflare Workers configuration with rate limiting bindings
+- **`worker-configuration.d.ts`** - TypeScript definitions for Cloudflare bindings (auto-generated)
+
+#### Rate Limiting
+
+The Cloudflare Workers implementation includes IP-based rate limiting to prevent abuse and reduce load on the bundlephobia API:
+
+- 10 requests per minute per IP address
+- Uses Cloudflare's built-in Rate Limiting API
+- Rate limit exceeded returns 429 status with error message
+
+#### Development Workflow
+
+```bash
+# Generate TypeScript bindings (run after wrangler.jsonc changes)
+pnpm --filter @repo/cloudflare exec wrangler types
+
+# Development server
+pnpm --filter @repo/cloudflare dev
+
+# Type checking
+pnpm --filter @repo/cloudflare typecheck
+
+# Linting
+pnpm --filter @repo/cloudflare lint
+
+# Formatting
+pnpm --filter @repo/cloudflare format
+```
+
+**Important**: Always run `pnpm --filter @repo/cloudflare exec wrangler types` after modifying `wrangler.jsonc` to regenerate TypeScript bindings for Cloudflare Workers runtime APIs and custom bindings.
+
 ### Error Handling Patterns
 
 The API layer implements comprehensive error handling for bundlephobia API responses:
+
 - Package not found (404)
 - Invalid package names
 - Rate limiting
