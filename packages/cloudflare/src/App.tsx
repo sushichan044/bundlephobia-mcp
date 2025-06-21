@@ -3,20 +3,14 @@ import {
   TOOL_TITLE,
 } from "bundlephobia-mcp/internal/constants";
 import { useMemo } from "react";
-import Fa6SolidCircleInfo from "~icons/fa6-solid/circle-info";
 
 import { CodeBlock } from "./components/CodeBlock";
+import { InstallToCursor } from "./components/InstallToCursor";
 import { Meta } from "./components/Meta";
 import { useBaseUrl } from "./hooks/useBaseUrl";
-import { useMCPConfigSnippet } from "./hooks/useConfigString";
+import { createMCPConfigSnippet } from "./utils/configSnippet";
 
-// https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format
-const getHTTPStreamConfig = (httpStreamEndpoint: string) => ({
-  bundlephobia: {
-    type: "http",
-    url: httpStreamEndpoint,
-  },
-});
+const MCP_CONFIG_SERVER_NAME = "bundlephobia";
 
 function App() {
   const baseUrl = useBaseUrl();
@@ -26,11 +20,19 @@ function App() {
     [baseUrl],
   );
 
-  const httpStreamConfig = useMemo(
-    () => getHTTPStreamConfig(httpStreamEndpoint),
-    [httpStreamEndpoint],
+  const httpStreamConfigSnippet = createMCPConfigSnippet(
+    MCP_CONFIG_SERVER_NAME,
+    {
+      type: "http",
+      url: httpStreamEndpoint,
+    },
   );
-  const httpStreamConfigSnippet = useMCPConfigSnippet(httpStreamConfig);
+
+  const npxStdioSnippet = createMCPConfigSnippet(MCP_CONFIG_SERVER_NAME, {
+    args: ["bundlephobia-mcp"],
+    command: "npx",
+    type: "stdio",
+  });
 
   return (
     <>
@@ -58,16 +60,6 @@ function App() {
                 bundlephobia.com
               </a>
             </p>
-
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-md not-prose">
-              <p className="text-blue-700 flex items-center">
-                <Fa6SolidCircleInfo className="h-5 w-5 mr-2 text-current" />
-                <span>
-                  Support for StreamableHTTPServerTransport is implemented. But
-                  not available for most MCP Clients, So it is not documented.
-                </span>
-              </p>
-            </div>
           </article>
 
           <article className="prose prose-slate">
@@ -82,19 +74,43 @@ function App() {
             </div>
             <div>
               <h3>Add to Cursor</h3>
-              <a href="https://cursor.com/install-mcp?name=bundlephobia&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYnVuZGxlcGhvYmlhLW1jcC5zdXNoaWNoYW4wNDQud29ya2Vycy5kZXYvbWNwIn0%3D">
-                <img
-                  alt="Add bundlephobia MCP server to Cursor"
-                  height="32"
-                  src="https://cursor.com/deeplink/mcp-install-dark.svg"
-                />
-              </a>
+              <InstallToCursor
+                installationLink={httpStreamConfigSnippet.cursorInstallLink}
+              />
             </div>
             <div>
               <h3>Add to VSCode</h3>
               <CodeBlock
                 className="not-prose"
                 snippet={httpStreamConfigSnippet.vscodeCommand}
+                title="VSCode CLI"
+              />
+            </div>
+          </article>
+
+          <hr className="prose prose-slate" />
+
+          <article className="prose prose-slate">
+            <h2>Configuration for Stdio Transport</h2>
+            <div>
+              <h3>Edit json configuration</h3>
+              <CodeBlock
+                className="not-prose"
+                snippet={npxStdioSnippet.json}
+                title="mcp.json"
+              />
+            </div>
+            <div>
+              <h3>Add to Cursor</h3>
+              <InstallToCursor
+                installationLink={npxStdioSnippet.cursorInstallLink}
+              />
+            </div>
+            <div>
+              <h3>Add to VSCode</h3>
+              <CodeBlock
+                className="not-prose"
+                snippet={npxStdioSnippet.vscodeCommand}
                 title="VSCode CLI"
               />
             </div>
