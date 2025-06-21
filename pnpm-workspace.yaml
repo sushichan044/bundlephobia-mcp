@@ -18,7 +18,7 @@ catalogs:
     "@virtual-live-lab/tsconfig": 2.1.20
     eslint: 9.27.0
     eslint-plugin-react-hooks: 5.2.0
-    pkg-pr-new: 0.0.50
+    pkg-pr-new: 0.0.53
     prettier: 3.5.3
     release-it: 19.0.2
     release-it-pnpm: 4.6.5
