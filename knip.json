@@ -1,0 +1,15 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "workspaces": {
+    ".": {
+      "project": ["src/**/*.ts"],
+      "ignore": ["dist/**", "packages/**"]
+    },
+    "packages/cloudflare": {
+      "entry": ["src/main.tsx", "src/server/index.ts"],
+      "project": ["src/**/*.{ts,tsx}"],
+      "ignore": ["dist/**"]
+    }
+  },
+  "ignoreExportsUsedInFile": true
+}
