@@ -68,6 +68,9 @@ jobs:
       - name: Run tests
         run: pnpm run test
 
+      - name: Run knip
+        run: pnpm run knip
+
       - name: Build cloudflare
         if: needs.paths-filter.outputs.cloudflare == 'true'
         run: pnpm --filter cloudflare run build
