@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.7
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Restrict all unused exports &nbsp;-&nbsp; by **sushichan044** [<samp>(d59f8)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/d59f86c)
+
+### &nbsp;&nbsp;&nbsp;Performance
+
+- Specify both width and height to avoid CLS &nbsp;-&nbsp; by **sushichan044** [<samp>(e7e9a)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/e7e9ae5)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.2.6...0.2.7)
+
 ## 0.2.6
 
 *No significant changes*
