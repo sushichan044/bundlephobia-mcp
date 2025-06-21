@@ -21,7 +21,11 @@ app.use(async (c, next) => {
 
 app.use("/mcp", async (c, next) => {
   const info = getConnInfo(c);
-  const clientIP = info.remote.address ?? "unknown";
+
+  const clientIP = info.remote.address;
+  if (clientIP == null) {
+    return await next();
+  }
 
   const rateLimiter = c.env.BUNDLEPHOBIA_RATE_LIMITER;
   const { success } = await rateLimiter.limit({ key: clientIP });
