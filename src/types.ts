@@ -1,7 +1,7 @@
 /**
  * `/api/size`
  */
-export interface PackageStatsResponse
+export interface PackageStats
   extends PackageAssets,
     PackageBundle,
     PackageInfo {}
@@ -9,11 +9,11 @@ export interface PackageStatsResponse
 /**
  * `/api/package-history`
  */
-export interface PackageStatsHistoryResponse {
+export interface PackageStatsHistory {
   /**
    * If the package is not found, the response will be an empty object.
    */
-  [version: string]: PackageStatsResponse | Record<string, never>;
+  [version: string]: PackageStats | Record<string, never>;
 }
 
 export interface PackageBundle {
@@ -51,6 +51,7 @@ export interface PackageAssets {
   dependencySizes: DependencySize[];
   gzip: number;
   ignoredMissingDependencies?: string[];
+  parse?: ParseTimeInfo | null;
   peerDependencies?: string[];
   size: number;
 }
