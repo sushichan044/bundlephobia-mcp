@@ -1,16 +1,19 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-import { errorContentFromPackageHistoryAPIErrorResponse } from "./api/package-history";
+import { structuredErrorOfPackageHistoryAPI } from "./api/package-history";
 import { fetchPackageHistory } from "./api/package-history";
 import { isPackageHistoryAPIErrorResponse } from "./api/package-history";
 import {
-  errorContentFromSizeAPIErrorResponse,
   fetchPackageStats,
   isSizeAPIErrorResponse,
+  structuredErrorOfSizeAPI,
 } from "./api/size";
 import { PKG_NAME, PKG_VERSION } from "./constants";
-import { formatPackageHistory, formatPackageHistoryStats } from "./format";
+import {
+  packageStatsHistoryMCPOutputSchema,
+  structuredPackageStatsOutput,
+} from "./structured-output";
 import { isNonEmptyString } from "./utils/string";
 
 /**
@@ -24,84 +27,63 @@ export const createServer = (): McpServer => {
     version: PKG_VERSION,
   });
 
-  server.tool(
+  server.registerTool(
     "get_npm_package_info",
-    [
-      "Get information about an npm package with bundlephobia.",
-      "",
-      "For example, you can retrieve information about:",
-      "- Bundle size",
-      "- Tree-shakeability",
-      "- Dependencies",
-      "- Peer dependencies",
-      "- Assets",
-      "## Usage",
-      "```",
-      "get_npm_package_info(name: '$PACKAGE_NAME')",
-      "```",
-    ].join("\n"),
     {
-      name: z
-        .string()
-        .describe("The name of the npm package to get information about."),
+      annotations: {
+        destructiveHint: false,
+        openWorldHint: true,
+        readOnlyHint: true,
+        title: "Get information about an npm package",
+      },
+      description: [
+        "Get information about an npm package with bundlephobia.",
+        "",
+        "For example, you can retrieve information about:",
+        "- Bundle size",
+        "- Tree-shakeability",
+        "- Dependencies",
+        "- Peer dependencies",
+        "- Assets",
+        "## Usage",
+        "```",
+        "get_npm_package_info(name: '$PACKAGE_NAME')",
+        "```",
+      ].join("\n"),
+      inputSchema: {
+        name: z
+          .string()
+          .describe("The name of the npm package to get information about."),
+      },
+      outputSchema: structuredPackageStatsOutput.schema,
     },
-
-    {
-      destructiveHint: false,
-      openWorldHint: true,
-      readOnlyHint: true,
-      title: "Get information about an npm package",
-    },
-
     async ({ name }) => {
       try {
         if (!isNonEmptyString(name)) {
-          return {
-            content: [
-              {
-                text: [
-                  "# ❌ Invalid Input Error",
-                  "",
-                  "You must provide a non-empty string.",
-                ].join("\n"),
-                type: "text",
-              },
-            ],
-            isError: true,
-          };
+          return structuredPackageStatsOutput.error({
+            code: "InvalidInputError",
+            messages: ["Package name must be a non-empty string"],
+          });
         }
 
         const packageInfo = await fetchPackageStats(name);
 
         if (isSizeAPIErrorResponse(packageInfo)) {
-          return errorContentFromSizeAPIErrorResponse(packageInfo);
+          return structuredPackageStatsOutput.error(
+            structuredErrorOfSizeAPI(packageInfo),
+          );
         }
 
-        return {
-          content: [
-            {
-              text: formatPackageHistoryStats(packageInfo),
-              type: "text",
-            },
-          ],
-        };
+        return structuredPackageStatsOutput.success(packageInfo);
       } catch (error) {
         console.error(error);
-        return {
-          content: [
-            {
-              text: [
-                "# **Error Occurred**",
-                "It looks like there was an error while communicating with the bundlephobia API.",
-                "",
-                "## Error Details",
-                error instanceof Error ? error.message : String(error),
-              ].join("\n"),
-              type: "text",
-            },
+        return structuredPackageStatsOutput.error({
+          code: "FetchError",
+          messages: [
+            "An error occurred while fetching the package information from bundlephobia.",
+            error instanceof Error ? error.message : String(error),
           ],
-          isError: true,
-        };
+        });
       }
     },
   );
@@ -130,56 +112,36 @@ export const createServer = (): McpServer => {
     {
       destructiveHint: false,
       openWorldHint: true,
+      outputSchema: packageStatsHistoryMCPOutputSchema.schema,
       readOnlyHint: true,
       title: "Get a version history of npm packages",
     },
-
     async ({ name }) => {
       try {
         if (!isNonEmptyString(name)) {
-          return {
-            content: [
-              {
-                text: [
-                  "# ❌ Invalid Input Error",
-                  "",
-                  "You must provide a non-empty string.",
-                ].join("\n"),
-                type: "text",
-              },
-            ],
-            isError: true,
-          };
+          return packageStatsHistoryMCPOutputSchema.error({
+            code: "InvalidInputError",
+            messages: ["Package name must be a non-empty string"],
+          });
         }
         const packageInfo = await fetchPackageHistory(name);
 
         if (isPackageHistoryAPIErrorResponse(packageInfo)) {
-          return errorContentFromPackageHistoryAPIErrorResponse(packageInfo);
+          return packageStatsHistoryMCPOutputSchema.error(
+            structuredErrorOfPackageHistoryAPI(packageInfo),
+          );
         }
 
-        return {
-          content: Object.entries(packageInfo).map(([version, pastPkg]) => ({
-            text: formatPackageHistory(version, pastPkg),
-            type: "text",
-          })),
-        };
+        return packageStatsHistoryMCPOutputSchema.success(packageInfo);
       } catch (error) {
         console.error(error);
-        return {
-          content: [
-            {
-              text: [
-                "# **Error Occurred**",
-                "It looks like there was an error while communicating with the bundlephobia API.",
-                "",
-                "## Error Details",
-                error instanceof Error ? error.message : String(error),
-              ].join("\n"),
-              type: "text",
-            },
+        return packageStatsHistoryMCPOutputSchema.error({
+          code: "FetchError",
+          messages: [
+            "An error occurred while fetching the package history from bundlephobia.",
+            error instanceof Error ? error.message : String(error),
           ],
-          isError: true,
-        };
+        });
       }
     },
   );

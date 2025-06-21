@@ -1,8 +1,7 @@
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-
 import { ofetch } from "ofetch";
 
-import type { PackageStatsResponse } from "../../types";
+import type { StructuredError } from "../../structured-output";
+import type { PackageStats } from "../../types";
 
 /**
  * Error from bundlephobia API on `/api/size`
@@ -39,153 +38,83 @@ export function isSizeAPIErrorResponse(
   return "code" in response;
 }
 
-export function errorContentFromSizeAPIErrorResponse(
+export function structuredErrorOfSizeAPI(
   error: SizeAPIErrorResponse,
-): CallToolResult {
+): StructuredError {
   switch (error.code) {
     case "BlocklistedPackageError":
       return {
-        content: [
-          {
-            text: [
-              "# ⛔ Blacklisted Package Error",
-              "",
-              "The package you were looking for is blocklisted because it failed to build multiple times in the past and further tries aren't likely to succeed. This can happen if this package wasn't meant to be bundled in a client side application.",
-            ].join("\n"),
-            type: "text",
-          },
+        code: "BlocklistedPackageError",
+        messages: [
+          "The package you were looking for is blocklisted because it failed to build multiple times in the past and further tries aren't likely to succeed.",
+          "This can happen if this package wasn't meant to be bundled in a client side application.",
         ],
-        isError: true,
       };
     case "BuildError":
       return {
-        content: [
-          {
-            text: ["# 🛑 Build Error", "", error.details].join("\n"),
-            type: "text",
-          },
-        ],
-        isError: true,
+        code: "BuildError",
+        messages: [error.details],
       };
     case "EntryPointError":
       return {
-        content: [
-          {
-            text: ["# 🚫 Entry Point Error", "", error.message].join("\n"),
-            type: "text",
-          },
-        ],
-        isError: true,
+        code: "EntryPointError",
+        messages: [error.message],
       };
     case "InstallError":
       return {
-        content: [
-          {
-            text: ["# 📦 Installation Error", "", error.message].join("\n"),
-            type: "text",
-          },
-        ],
-        isError: true,
+        code: "InstallError",
+        messages: [error.message],
       };
     case "MinifyError":
       return {
-        content: [
-          {
-            text: [
-              "# 🔍 Minification Error",
-              "",
-              "```",
-              error.error.details.originalError,
-              "```",
-            ].join("\n"),
-            type: "text",
-          },
-        ],
-        isError: true,
+        code: "MinifyError",
+        messages: [error.error.details.originalError],
       };
     case "MissingDependencyError":
       return {
-        content: [
-          {
-            text: [
-              "# ⚠️ Missing Dependency Error",
-              "",
-              `This package (or this version) uses following modules, ` +
-                `but does not specify ${
-                  error.details.extra.missingModules.length > 1 ? "them" : "it"
-                } either as a dependency or a peer dependency`,
-              "",
-              "## Missing Modules",
-              ...error.details.extra.missingModules.map(
-                (module) => `- ${module}`,
-              ),
-            ].join("\n"),
-            type: "text",
-          },
+        code: "MissingDependencyError",
+        messages: [
+          `This package (or this version) uses following modules, but does not specify ${
+            error.details.extra.missingModules.length > 1 ? "them" : "it"
+          } either as a dependency or a peer dependency`,
+          `Missing modules: ${error.details.extra.missingModules.join(", ")}`,
         ],
-        isError: true,
       };
-
     case "PackageNotFoundError":
       return {
-        content: [
-          {
-            text: [
-              "# 🔍 Package Not Found Error",
-              "",
-              "The specified package could not be found. Please check the package name.",
-            ].join("\n"),
-            type: "text",
-          },
+        code: "PackageNotFoundError",
+        messages: [
+          "The specified package could not be found. Please check the package name.",
         ],
-        isError: true,
       };
     case "PackageVersionMismatchError":
       return {
-        content: [
-          {
-            text: [
-              "# ⚠️ Version Mismatch Error",
-              "",
-              "The package version does not match. Please check dependency compatibility.",
-            ].join("\n"),
-            type: "text",
-          },
+        code: "PackageVersionMismatchError",
+        messages: [
+          "The package version does not match. Please check dependency compatibility.",
         ],
-        isError: true,
       };
     case "UnsupportedPackageError":
       return {
-        content: [
-          {
-            text: [
-              "# ❌ Unsupported Package Error",
-              "",
-              "This package is currently not supported. Please consider alternative packages.",
-            ].join("\n"),
-            type: "text",
-          },
+        code: "UnsupportedPackageError",
+        messages: [
+          "This package is currently not supported. Please consider alternative packages.",
         ],
-        isError: true,
       };
     default:
       return {
-        content: [
-          {
-            text: [
-              "# ❓ Unknown Error",
-              "",
-              "An unexpected error occurred. No detailed information is available.",
-            ].join("\n"),
-            type: "text",
-          },
+        code: "UnknownError",
+        messages: [
+          "An unexpected error occurred. No detailed information is available.",
+
+          // magic satisfies operator to trigger type error if we forgot to handle a case
+          String(error satisfies never),
         ],
-        isError: true,
       };
   }
 }
 
-type ApiSizeResponse = PackageStatsResponse | SizeAPIErrorResponse;
+type ApiSizeResponse = PackageStats | SizeAPIErrorResponse;
 
 /**
  * 403
