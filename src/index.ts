@@ -88,33 +88,35 @@ export const createServer = (): McpServer => {
     },
   );
 
-  server.tool(
+  server.registerTool(
     "get_npm_package_info_history",
-    [
-      "Get all the past information about an npm package stored in bundlephobia.",
-      "",
-      "For example, you can retrieve information about:",
-      "- Bundle size",
-      "- Tree-shakeability",
-      "- Dependencies",
-      "- Peer dependencies",
-      "- Assets",
-      "## Usage",
-      "```",
-      "get_npm_package_info_history(name: '$PACKAGE_NAME')",
-      "```",
-    ].join("\n"),
     {
-      name: z
-        .string()
-        .describe("The name of the npm package to get information about."),
-    },
-    {
-      destructiveHint: false,
-      openWorldHint: true,
+      annotations: {
+        destructiveHint: false,
+        openWorldHint: true,
+        readOnlyHint: true,
+        title: "Get a version history of npm packages",
+      },
+      description: [
+        "Get all the past information about an npm package stored in bundlephobia.",
+        "",
+        "For example, you can retrieve information about:",
+        "- Bundle size",
+        "- Tree-shakeability",
+        "- Dependencies",
+        "- Peer dependencies",
+        "- Assets",
+        "## Usage",
+        "```",
+        "get_npm_package_info_history(name: '$PACKAGE_NAME')",
+        "```",
+      ].join("\n"),
+      inputSchema: {
+        name: z
+          .string()
+          .describe("The name of the npm package to get information about."),
+      },
       outputSchema: packageStatsHistoryMCPOutputSchema.schema,
-      readOnlyHint: true,
-      title: "Get a version history of npm packages",
     },
     async ({ name }) => {
       try {
