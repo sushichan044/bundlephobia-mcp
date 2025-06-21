@@ -7,20 +7,6 @@
   "assets": {
     "not_found_handling": "single-page-application"
   },
-  "migrations": [
-    {
-      "new_sqlite_classes": ["BundlephobiaAgent"],
-      "tag": "v1"
-    }
-  ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "class_name": "BundlephobiaAgent",
-        "name": "BUNDLEPHOBIA_AGENT"
-      }
-    ]
-  },
   "observability": {
     "enabled": true
   }
