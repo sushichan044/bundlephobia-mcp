@@ -35,7 +35,7 @@ const dependencySizeSchema = z.object({
   name: z.string(),
 });
 
-export const packageAssetsSchema = z.object({
+const packageAssetsSchema = z.object({
   assets: z.array(assetInfoSchema),
   dependencyCount: z.number(),
   dependencySizes: z.array(dependencySizeSchema),

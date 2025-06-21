@@ -5,14 +5,14 @@ import { z } from "zod";
 
 import { packageStatsHistorySchema, packageStatsSchema } from "./schema";
 
-export const structuredErrorSchema = z.object({
+const structuredErrorSchema = z.object({
   code: z.string(),
   messages: z.array(z.string()),
 });
 
 export type StructuredError = z.infer<typeof structuredErrorSchema>;
 
-export const generateStructuredOutput = <TData extends ZodTypeAny>(
+const generateStructuredOutput = <TData extends ZodTypeAny>(
   expectedStructure: TData,
 ) => {
   // we cannot pass z.discriminatedUnion to outputSchema...

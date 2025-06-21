@@ -6,7 +6,7 @@ import type { PackageStats } from "../../types";
 /**
  * Error from bundlephobia API on `/api/size`
  */
-export type SizeAPIErrorResponse =
+type SizeAPIErrorResponse =
   | BlocklistedPackageError
   | BuildError
   | EntryPointError
