@@ -30,8 +30,6 @@ export const generateStructuredOutput = <TData extends ZodTypeAny>(
         status: "success",
       } satisfies z.infer<ZodObject<typeof outputSchema>>;
 
-      console.error(JSON.stringify(structuredContent, null, 2));
-
       return {
         content: [
           {
