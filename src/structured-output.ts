@@ -1,5 +1,5 @@
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { ZodObject, ZodTypeAny } from "zod";
+import type { ZodTypeAny } from "zod";
 
 import { z } from "zod";
 
@@ -12,59 +12,63 @@ const structuredErrorSchema = z.object({
 
 export type StructuredError = z.infer<typeof structuredErrorSchema>;
 
-const generateStructuredOutput = <TData extends ZodTypeAny>(
-  expectedStructure: TData,
+const createStructuredOutput = <TData extends ZodTypeAny>(
+  dataSchema: TData,
 ) => {
-  // we cannot pass z.discriminatedUnion to outputSchema...
   const outputSchema = {
-    result: z.union([expectedStructure, structuredErrorSchema]),
-    status: z.union([z.literal("success"), z.literal("error")]),
+    error: structuredErrorSchema.optional(),
+    isError: z.boolean(),
+    result: dataSchema.optional(),
   };
 
   return {
     schema: outputSchema,
 
     success: (result: z.infer<TData>): CallToolResult => {
+      const isError = false;
       const structuredContent = {
+        error: undefined,
+        isError,
         result,
-        status: "success",
-      } satisfies z.infer<ZodObject<typeof outputSchema>>;
+      } satisfies z.infer<z.ZodObject<typeof outputSchema>>;
 
       return {
         content: [
           {
-            text: JSON.stringify(structuredContent, null, 2),
-            type: "text" as const,
+            text: JSON.stringify(structuredContent),
+            type: "text",
           },
         ],
-        isError: false,
-        structuredContent: structuredContent,
+        isError,
+        structuredContent,
       };
     },
 
-    error: (structuredError: StructuredError) => {
+    error: (structuredError: StructuredError): CallToolResult => {
+      const isError = true;
       const structuredContent = {
-        result: structuredError,
-        status: "error",
-      } satisfies z.infer<ZodObject<typeof outputSchema>>;
+        error: structuredError,
+        isError,
+        result: undefined,
+      } satisfies z.infer<z.ZodObject<typeof outputSchema>>;
 
       return {
         content: [
           {
-            text: JSON.stringify(structuredContent, null, 2),
-            type: "text" as const,
+            text: JSON.stringify(structuredContent),
+            type: "text",
           },
         ],
-        isError: true,
-        structuredContent: structuredContent,
+        isError,
+        structuredContent,
       };
     },
   };
 };
 
 export const structuredPackageStatsOutput =
-  generateStructuredOutput(packageStatsSchema);
+  createStructuredOutput(packageStatsSchema);
 
-export const packageStatsHistoryMCPOutputSchema = generateStructuredOutput(
+export const structuredPackageStatsHistoryOutput = createStructuredOutput(
   packageStatsHistorySchema,
 );

@@ -11,7 +11,7 @@ import {
 } from "./api/size";
 import { PKG_NAME, PKG_VERSION } from "./constants";
 import {
-  packageStatsHistoryMCPOutputSchema,
+  structuredPackageStatsHistoryOutput,
   structuredPackageStatsOutput,
 } from "./structured-output";
 import { isNonEmptyString } from "./utils/string";
@@ -116,12 +116,12 @@ export const createServer = (): McpServer => {
           .string()
           .describe("The name of the npm package to get information about."),
       },
-      outputSchema: packageStatsHistoryMCPOutputSchema.schema,
+      outputSchema: structuredPackageStatsHistoryOutput.schema,
     },
     async ({ name }) => {
       try {
         if (!isNonEmptyString(name)) {
-          return packageStatsHistoryMCPOutputSchema.error({
+          return structuredPackageStatsHistoryOutput.error({
             code: "InvalidInputError",
             messages: ["Package name must be a non-empty string"],
           });
@@ -129,15 +129,15 @@ export const createServer = (): McpServer => {
         const packageInfo = await fetchPackageHistory(name);
 
         if (isPackageHistoryAPIErrorResponse(packageInfo)) {
-          return packageStatsHistoryMCPOutputSchema.error(
+          return structuredPackageStatsHistoryOutput.error(
             structuredErrorOfPackageHistoryAPI(packageInfo),
           );
         }
 
-        return packageStatsHistoryMCPOutputSchema.success(packageInfo);
+        return structuredPackageStatsHistoryOutput.success(packageInfo);
       } catch (error) {
         console.error(error);
-        return packageStatsHistoryMCPOutputSchema.error({
+        return structuredPackageStatsHistoryOutput.error({
           code: "FetchError",
           messages: [
             "An error occurred while fetching the package history from bundlephobia.",
