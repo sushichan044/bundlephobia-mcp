@@ -12,7 +12,7 @@ catalogs:
     "@modelcontextprotocol/sdk": 1.13.0
     "@hono/mcp": 0.1.0
   dev:
-    "@types/node": 22.15.19
+    "@types/node": 24.0.13
     "@virtual-live-lab/eslint-config": 2.2.22
     "@virtual-live-lab/prettier-config": 2.0.19
     "@virtual-live-lab/tsconfig": 2.1.20
