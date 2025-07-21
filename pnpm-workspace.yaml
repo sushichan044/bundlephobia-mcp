@@ -14,7 +14,7 @@ catalogs:
   dev:
     "@types/node": 22.15.19
     "@virtual-live-lab/eslint-config": 2.2.22
-    "@virtual-live-lab/prettier-config": 2.0.19
+    "@virtual-live-lab/prettier-config": 2.0.21
     "@virtual-live-lab/tsconfig": 2.1.20
     eslint: 9.29.0
     eslint-plugin-react-hooks: 5.2.0
