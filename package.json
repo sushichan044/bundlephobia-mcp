@@ -57,7 +57,7 @@
     "@virtual-live-lab/prettier-config": "catalog:dev",
     "@virtual-live-lab/tsconfig": "catalog:dev",
     "eslint": "catalog:dev",
-    "knip": "5.61.2",
+    "knip": "5.62.0",
     "pkg-pr-new": "catalog:dev",
     "prettier": "catalog:dev",
     "release-it": "catalog:dev",
