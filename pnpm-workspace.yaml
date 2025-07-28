@@ -23,7 +23,7 @@ catalogs:
     release-it: 19.0.3
     release-it-pnpm: 4.6.6
     typescript: 5.8.3
-    typescript-eslint: 8.34.1
+    typescript-eslint: 8.38.0
   react:
     "@types/react": 19.1.8
     "@types/react-dom": 19.1.6
