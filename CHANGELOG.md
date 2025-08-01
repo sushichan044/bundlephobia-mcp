@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.8
+
+### &nbsp;&nbsp;&nbsp;Features
+
+- Add rate limiting to `/mcp` endpoint &nbsp;-&nbsp; by **sushichan044** [<samp>(eda73)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/eda738a)
+
+### &nbsp;&nbsp;&nbsp;Bug Fixes
+
+- Passthrough when IP is undefined &nbsp;-&nbsp; by **sushichan044** [<samp>(710f7)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/710f797)
+- Specify valid namespace id &nbsp;-&nbsp; by **sushichan044** [<samp>(e955e)</samp>](https://github.com/sushichan044/bundlephobia-mcp/commit/e955eb2)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/sushichan044/bundlephobia-mcp/compare/0.2.7...0.2.8)
+
 ## 0.2.7
 
 ### &nbsp;&nbsp;&nbsp;Bug Fixes
