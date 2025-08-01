@@ -1,4 +1,4 @@
-name: Release
+name: Publish to npm
 
 on:
   workflow_dispatch:
@@ -17,6 +17,7 @@ permissions:
 jobs:
   build-and-publish:
     name: Build and Publish
+    if: github.repository == 'sushichan044/bundlephobia-mcp'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -37,9 +38,11 @@ jobs:
         with:
           registry-url: "https://registry.npmjs.org"
 
+      - name: Setup latest npm to use trusted publish
+        run: |
+          npm install -g npm@latest
+
       - name: Release
         run: pnpm exec release-it
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: "true"
