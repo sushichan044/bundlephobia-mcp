@@ -20,7 +20,7 @@ catalogs:
     eslint-plugin-react-hooks: 5.2.0
     pkg-pr-new: 0.0.55
     prettier: 3.5.3
-    release-it: 19.0.3
+    release-it: 19.0.4
     release-it-pnpm: 4.6.6
     typescript: 5.8.3
     typescript-eslint: 8.34.1
