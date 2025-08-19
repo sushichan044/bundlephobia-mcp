@@ -102,8 +102,8 @@ function App() {
               </p>
               <CodeBlock
                 className="not-prose"
-                snippet={httpStreamConfigSnippet.json}
-                title="mcp_settings.json"
+                snippet={httpStreamConfigSnippet.claudeCodeJSON}
+                title=".mcp.json"
               />
             </div>
           </article>
@@ -150,8 +150,8 @@ function App() {
               </p>
               <CodeBlock
                 className="not-prose"
-                snippet={npxStdioSnippet.json}
-                title="mcp_settings.json"
+                snippet={npxStdioSnippet.claudeCodeJSON}
+                title=".mcp.json"
               />
             </div>
           </article>
