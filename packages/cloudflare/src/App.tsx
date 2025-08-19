@@ -86,6 +86,26 @@ function App() {
                 title="VSCode CLI"
               />
             </div>
+            <div>
+              <h3>Add to Claude Code</h3>
+              <p className="text-slate-600 text-sm">
+                See{" "}
+                <a
+                  className="underline hover:brightness-50 transition-all"
+                  href="https://docs.anthropic.com/en/docs/claude-code/mcp"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Claude Code MCP documentation
+                </a>{" "}
+                for setup instructions.
+              </p>
+              <CodeBlock
+                className="not-prose"
+                snippet={httpStreamConfigSnippet.json}
+                title="mcp_settings.json"
+              />
+            </div>
           </article>
 
           <hr className="prose prose-slate" />
@@ -112,6 +132,26 @@ function App() {
                 className="not-prose"
                 snippet={npxStdioSnippet.vscodeCommand}
                 title="VSCode CLI"
+              />
+            </div>
+            <div>
+              <h3>Add to Claude Code</h3>
+              <p className="text-slate-600 text-sm">
+                See{" "}
+                <a
+                  className="underline hover:brightness-50 transition-all"
+                  href="https://docs.anthropic.com/en/docs/claude-code/mcp"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Claude Code MCP documentation
+                </a>{" "}
+                for setup instructions.
+              </p>
+              <CodeBlock
+                className="not-prose"
+                snippet={npxStdioSnippet.json}
+                title="mcp_settings.json"
               />
             </div>
           </article>
