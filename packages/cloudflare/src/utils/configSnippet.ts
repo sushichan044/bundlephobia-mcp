@@ -15,8 +15,10 @@ export const createMCPConfigSnippet = (
   const prettyJSON = JSON.stringify(jsonWithName, null, 2);
   const vscodeCommand = `code --add-mcp '${JSON.stringify(jsonWithName)}'`;
   const cursorInstallLink = buildCursorInstallLink(name, rawConfig);
+  const claudeCodeJSON = JSON.stringify({ mcpServers: jsonWithName }, null, 2);
 
   return {
+    claudeCodeJSON,
     cursorInstallLink,
     json: prettyJSON,
     vscodeCommand,
