@@ -25,8 +25,8 @@ catalogs:
       specifier: 5.2.0
       version: 5.2.0
     pkg-pr-new:
-      specifier: 0.0.55
-      version: 0.0.55
+      specifier: 0.0.56
+      version: 0.0.56
     prettier:
       specifier: 3.5.3
       version: 3.5.3
@@ -97,7 +97,7 @@ importers:
         version: 5.61.2(@types/node@22.15.19)(typescript@5.8.3)
       pkg-pr-new:
         specifier: catalog:dev
-        version: 0.0.55
+        version: 0.0.56
       prettier:
         specifier: catalog:dev
         version: 3.5.3
@@ -3802,8 +3802,8 @@ packages:
     resolution: {integrity: sha512-4peoBq4Wks0riS0z8741NVv+/8IiTvqnZAr8QGgtdifrtpdXbNw/FxRS1l6NFqm4EMzuS0EDqNNx4XGaz8cuyQ==}
     engines: {node: '>=18'}
 
-  pkg-pr-new@0.0.55:
-    resolution: {integrity: sha512-2F/w3KCVIYMvHn1HrnKwl/4oK9nwhreljnIFEGzCYr+4FyvMFjBmkL3h+1Ggd3vMvnH2TMSwrxSI4DoLEC6QXw==}
+  pkg-pr-new@0.0.56:
+    resolution: {integrity: sha512-QUdWJ5m0IUNIujAIwc03wJ3L1BVCpSK8jm7yIz4F2pkvQ8afVltyl+/tJTPLKs5jcd2gkQZPl71NYwMYplRvaA==}
     hasBin: true
 
   pkg-types@1.3.1:
@@ -8565,7 +8565,7 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.1
 
-  pkg-pr-new@0.0.55:
+  pkg-pr-new@0.0.56:
     dependencies:
       '@jsdevtools/ez-spawn': 3.0.4
       '@octokit/action': 6.1.0
