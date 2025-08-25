@@ -22,7 +22,7 @@ catalogs:
     prettier: 3.5.3
     release-it: 19.0.3
     release-it-pnpm: 4.6.6
-    typescript: 5.8.3
+    typescript: 5.9.2
     typescript-eslint: 8.34.1
   react:
     "@types/react": 19.1.8
