@@ -74,8 +74,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1
       zod:
-        specifier: 3.25.67
-        version: 3.25.67
+        specifier: 4.1.8
+        version: 4.1.8
     devDependencies:
       '@types/node':
         specifier: catalog:dev
@@ -4857,6 +4857,9 @@ packages:
 
   zod@3.25.67:
     resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
+
+  zod@4.1.8:
+    resolution: {integrity: sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ==}
 
 snapshots:
 
@@ -9770,3 +9773,5 @@ snapshots:
   zod@3.22.3: {}
 
   zod@3.25.67: {}
+
+  zod@4.1.8: {}
